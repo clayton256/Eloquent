@@ -659,20 +659,20 @@
                 }
                 
                 if(!validIndex) {
+                    NSAlert *alert = [[NSAlert alloc] init];
                     if([UserDefaults boolForKey:DefaultsBackgroundIndexerEnabled]) {
                         // show Alert
-                        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"IndexNotReady", @"")
-                                                         defaultButton:NSLocalizedString(@"OK", @"") alternateButton:nil otherButton:nil 
-                                             informativeTextWithFormat:NSLocalizedString(@"IndexNotReadyBGOn", @"")];
-                        [alert runModal];
+                        [alert setMessageText:NSLocalizedString(@"IndexNotReady", @"")];
+                        [alert setInformativeText:NSLocalizedString(@"IndexNotReadyBGOn", @"")];
+                        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
                     } else {
                         // let the user know that creating the index on the fly might take a while
                         // show Alert
-                        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"IndexNotReady", @"")
-                                                         defaultButton:NSLocalizedString(@"OK", @"") alternateButton:nil otherButton:nil 
-                                             informativeTextWithFormat:NSLocalizedString(@"IndexNotReadyBGOff", @"")];
-                        [alert runModal];
+                        [alert setMessageText:NSLocalizedString(@"IndexNotReady", @"")];
+                        [alert setInformativeText:NSLocalizedString(@"IndexNotReadyBGOff", @"")];
+                        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
                     }
+                    [alert runModal];
                 }
             }
         }

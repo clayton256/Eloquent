@@ -127,10 +127,11 @@ static AppController *singleton;
         NSString *moduleFolder = [[Configuration config] defaultModulePath];
         if(![fm fileExistsAtPath:prefsPath] && [fm fileExistsAtPath:moduleFolder]) {
             // show Alert
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Warning", @"") 
-                                             defaultButton:NSLocalizedString(@"Yes", @"") 
-                                           alternateButton:NSLocalizedString(@"No", @"") 
-                                               otherButton:nil informativeTextWithFormat:NSLocalizedString(@"Info_OldModuleDatabaseDetected", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Warning", @"")];
+            [alert setInformativeText:NSLocalizedString(@"Info_OldModuleDatabaseDetected", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
             if([alert runModal] == NSAlertFirstButtonReturn) {
                 [fm removeItemAtPath:moduleFolder error:nil];
             }
@@ -226,11 +227,10 @@ static AppController *singleton;
     if(mod == nil) {
         NSString *sBible = [UserDefaults stringForKey:DefaultsBibleModule];
         if(sBible == nil) {
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"") 
-                                             defaultButton:NSLocalizedString(@"OK", @"") 
-                                           alternateButton:nil 
-                                               otherButton:nil 
-                                 informativeTextWithFormat:NSLocalizedString(@"NoDefaultBibleSelectedText", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Information", @"")];
+            [alert setInformativeText:NSLocalizedString(@"NoDefaultBibleSelectedText", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
             [alert runModal];
         } else {
             mod = [[SwordManager defaultManager] moduleWithName:sBible];
@@ -280,11 +280,11 @@ static AppController *singleton;
             // we don't know this module
             // ask user whether to copy this module to the repository for permanent use
             // or to only use it temporarily
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"") 
-                                             defaultButton:NSLocalizedString(@"Permanent", @"") 
-                                           alternateButton:NSLocalizedString(@"Temporary", @"") 
-                                               otherButton:nil 
-                                 informativeTextWithFormat:@"%@", [NSString stringWithFormat:NSLocalizedString(@"ModuleXYNotInRepoWantToCopy", @""), moduleName]];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Information", @"")];
+            [alert setInformativeText:[NSString stringWithFormat:NSLocalizedString(@"ModuleXYNotInRepoWantToCopy", @""), moduleName]];
+            [alert addButtonWithTitle:NSLocalizedString(@"Permanent", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"Temporary", @"")];
 
             NSString *destinationPath = filename;
             if([alert runModal] == NSAlertFirstButtonReturn) {
@@ -398,11 +398,12 @@ static AppController *singleton;
 - (NSUInteger)shutdownWindowAndSession {
     // check for any unsaved content
     if([[SessionManager defaultManager] hasUnsavedContent]) {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Warning", @"")
-                                         defaultButton:NSLocalizedString(@"Yes", @"")
-                                       alternateButton:NSLocalizedString(@"Cancel", @"")
-                                           otherButton:NSLocalizedString(@"No", @"")
-                             informativeTextWithFormat:NSLocalizedString(@"UnsavedContentQuit", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Warning", @"")];
+        [alert setInformativeText:NSLocalizedString(@"UnsavedContentQuit", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Cancel", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
         NSInteger modalResult = [alert runModal];
         if(modalResult == NSAlertFirstButtonReturn) {
             [[SessionManager defaultManager] saveContent];
@@ -539,11 +540,10 @@ static AppController *singleton;
     NSString *modName = [createModuleNameTextField stringValue];
     if([[SwordManager defaultManager] moduleWithName:modName] != nil) {
         // module exists already
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"ModuleNameExists", @"") 
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil 
-                                           otherButton:nil 
-                             informativeTextWithFormat:NSLocalizedString(@"ModuleNameExistsText", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"ModuleNameExists", @"")];
+        [alert setInformativeText:NSLocalizedString(@"ModuleNameExistsText", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
     } else {
         NSString *modPath = [SwordCommentary createCommentaryWithName:modName];
@@ -594,14 +594,16 @@ static AppController *singleton;
         int err = AuthorizationExecuteWithPrivileges(authorizationRef, [cmd UTF8String], 0, args, NULL);
         if(err != 0) {
             CocoLog(LEVEL_ERR, @"Error at executeWithPrivileges!");
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Warning", @"")
-                                             defaultButton:NSLocalizedString(@"OK", @"") alternateButton:nil otherButton:nil 
-                                 informativeTextWithFormat:NSLocalizedString(@"ErrorSWORDToolsInstallation", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Warning", @"")];
+            [alert setInformativeText:NSLocalizedString(@"ErrorSWORDToolsInstallation", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
             [alert runModal];
         } else {
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                             defaultButton:NSLocalizedString(@"OK", @"") alternateButton:nil otherButton:nil 
-                                 informativeTextWithFormat:NSLocalizedString(@"SWORDToolsInstalled", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Information", @"")];
+            [alert setInformativeText:NSLocalizedString(@"SWORDToolsInstalled", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
             [alert runModal];
         }
     }    
@@ -624,9 +626,10 @@ static AppController *singleton;
         if(err != 0) {
             CocoLog(LEVEL_ERR, @"Error at executeWithPrivileges!");
         } else {
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                             defaultButton:NSLocalizedString(@"OK", @"") alternateButton:nil otherButton:nil 
-                                 informativeTextWithFormat:NSLocalizedString(@"SWORDToolsUninstalled", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Information", @"")];
+            [alert setInformativeText:NSLocalizedString(@"SWORDToolsUninstalled", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
             [alert runModal];
         }
     }    

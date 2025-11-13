@@ -149,16 +149,16 @@
     if([self hasTasks]) {
         [self checkDisclaimerValueAndShowAlertText:NSLocalizedString(@"OnlyRemoveAndInstallForLocalSources", @"")];
         // start on new thread
-        dispatch_async(dispatch_queue_create("TaskProcessor", NULL), ^(void) {
+//        dispatch_async(dispatch_queue_create("TaskProcessor", NULL), ^(void) {
             [self batchProcessTasks:[self numberOfTasks]];
 
-            [modListViewController refreshSwordManager];
-            [modListViewController refreshModulesList];
+        dispatch_async(dispatch_get_main_queue(), ^(void) {
+            [self->modListViewController refreshSwordManager];
+            [self->modListViewController refreshModulesList];
             
-            dispatch_async(dispatch_get_main_queue(), ^(void) {
                 SendNotifyModulesChanged(nil);
             });
-        });
+//        });
         
     } else {
         NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")

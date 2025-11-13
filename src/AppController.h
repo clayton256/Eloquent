@@ -72,7 +72,6 @@
 - (IBAction)showCreateModuleWindow:(id)sender;
 - (IBAction)openEloquentWikiPage:(id)sender;
 - (IBAction)openEloquentHomePage:(id)sender;
-- (IBAction)openMacSwordForumPage:(id)sender;
 
 #ifndef APPSTORE
 // linking SWORD utils

@@ -53,10 +53,12 @@
  \brief set value to min
  */
 - (void)reset {
-	[progressIndicator setDoubleValue:[progressIndicator minValue]];
-    [cancelButton setEnabled:YES];
-	// display at once
-	[progressIndicator display];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setDoubleValue:[self->progressIndicator minValue]];
+        [self->cancelButton setEnabled:YES];
+        // display at once
+        [self->progressIndicator display];
+    });
 }
 
 /**
@@ -103,7 +105,9 @@
 
 // threaded
 - (void)setIsThreaded:(NSNumber *)aSetting {
-	[progressIndicator setUsesThreadedAnimation:[aSetting boolValue]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setUsesThreadedAnimation:[aSetting boolValue]];
+    });
 }
 
 - (BOOL)isThreaded {
@@ -155,8 +159,7 @@
 }
 
 // dealing with progress
-- (void)setIsIndeterminateProgress:(NSNumber *)aSetting
-{
+- (void)setIsIndeterminateProgress:(NSNumber *)aSetting {
 	[progressIndicator setIndeterminate:[aSetting boolValue]];
 }
 
@@ -165,9 +168,8 @@
 	return [progressIndicator isIndeterminate];
 }
 
-- (void)setIsDisplayedWhenStopped:(NSNumber *)aSetting
-{
-	[progressIndicator setDisplayedWhenStopped:[aSetting boolValue]];
+- (void)setIsDisplayedWhenStopped:(NSNumber *)aSetting {
+    [progressIndicator setDisplayedWhenStopped:[aSetting boolValue]];
 }
 
 - (BOOL)isDisplayedWhenStopped {
@@ -175,7 +177,7 @@
 }
 
 - (void)setMaxProgressValue:(NSNumber *)aValue {
-	[progressIndicator setMaxValue:[aValue doubleValue]];
+    [progressIndicator setMaxValue:[aValue doubleValue]];
 }
 
 - (double)maxProgressValue {
@@ -183,7 +185,7 @@
 }
 
 - (void)setMinProgressValue:(NSNumber *)aValue {
-	[progressIndicator setMinValue:[aValue doubleValue]];
+    [progressIndicator setMinValue:[aValue doubleValue]];
 }
 
 - (double)minProgressValue {
@@ -191,7 +193,9 @@
 }
 
 - (void)setProgressValue:(NSNumber *)aValue {
-	[progressIndicator setDoubleValue:[aValue doubleValue]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setDoubleValue:[aValue doubleValue]];
+    });
 }
 
 - (double)progressValue {
@@ -199,9 +203,11 @@
 }
 
 - (void)incrementProgressBy:(NSNumber *)aValue {
-	[progressIndicator incrementBy:[aValue doubleValue]];
-	// display at once
-	[progressIndicator display];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator incrementBy:[aValue doubleValue]];
+        // display at once
+        [self->progressIndicator display];
+    });
 }
 
 - (void)startProgressAnimation {
@@ -209,7 +215,9 @@
 }
 
 - (void)stopProgressAnimation {
-	[progressIndicator stopAnimation:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator stopAnimation:nil];
+    });
 }
 
 - (void)beginSheetForWindow:(NSWindow *)docWindow {
@@ -221,12 +229,10 @@
 
 // begin sheet
 - (void)beginSheet {
-	[NSApp beginSheet:sheet 
-	   modalForWindow:sheetWindow 
-		modalDelegate:self 
-	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-		  contextInfo:nil];
-	
+    [sheetWindow beginSheet:sheet completionHandler:^(NSModalResponse returnCode) {
+        [self sheetDidEnd:self->sheet returnCode:(int)returnCode contextInfo:nil];
+    }];
+    
 	// make panel key window and order front
 	[sheet makeKeyWindow];
 }

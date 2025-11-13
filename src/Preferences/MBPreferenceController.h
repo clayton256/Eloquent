@@ -124,14 +124,8 @@ typedef enum _VerseNumberingType {
     IBOutlet NSView *printPrefsView;
     NSRect printPrefsViewRect;
     
-	// the window the sheet shall come up
-	NSWindow *sheetWindow;
-    
 	// set delegate
 	id __strong delegate;
-	
-	// return code of sheet
-	int sheetReturnCode;
 	
 	// margins
 	int northMargin;
@@ -141,7 +135,6 @@ typedef enum _VerseNumberingType {
 }
 
 @property (strong, readwrite) id delegate;
-@property (strong, readwrite) NSWindow *sheetWindow;
 
 // the default prefs controller
 + (MBPreferenceController *)defaultPrefsController;
@@ -162,14 +155,6 @@ typedef enum _VerseNumberingType {
 // get font for module
 - (NSFont *)normalDisplayFontForModuleName:(NSString *)aModName;
 - (NSFont *)boldDisplayFontForModuleName:(NSString *)aModName;
-
-// begin sheet
-- (void)beginSheetForWindow:(NSWindow *)docWindow;
-- (void)endSheet;
-// sheet return code
-- (int)sheetReturnCode;
-// end sheet callback
-- (void)sheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo;
 
 // actions
 - (IBAction)toggleBackgroundIndexer:(id)sender;

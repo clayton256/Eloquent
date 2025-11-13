@@ -18,7 +18,6 @@
 @implementation MBPreferenceController
 
 @synthesize delegate;
-@synthesize sheetWindow;
 
 static MBPreferenceController *instance;
 
@@ -368,44 +367,6 @@ static MBPreferenceController *instance;
 	
 	// display complete sheet again
 	[[self window] display];
-}
-
-//--------------------------------------------------------------------
-//----------- sheet stuff --------------------------------------
-//--------------------------------------------------------------------
-/**
- \brief the sheet return code
-*/
-- (int)sheetReturnCode {
-	return sheetReturnCode;
-}
-
-/**
- \brief bring up this sheet. if docWindow is nil this will be an Window
-*/
-- (void)beginSheetForWindow:(NSWindow *)docWindow {
-	[self setSheetWindow:docWindow];
-	
-	[NSApp beginSheet:[self window]
-	   modalForWindow:docWindow
-		modalDelegate:self 
-	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-		  contextInfo:nil];
-}
-
-/**
- \brief end this sheet
-*/
-- (void)endSheet {
-	[NSApp endSheet:[self window] returnCode:0];
-}
-
-// end sheet callback
-- (void)sheetDidEnd:(NSWindow *)sSheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	// hide sheet
-	[sSheet orderOut:nil];
-	
-	sheetReturnCode = returnCode;
 }
 
 //--------------------------------------------------------------------
