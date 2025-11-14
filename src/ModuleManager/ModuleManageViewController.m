@@ -7,7 +7,7 @@
 #import "MBPreferenceController.h"
 #import "globals.h"
 #import "ModuleListViewController.h"
-#import "Eloquent-Swift.h"
+#import "FolderUtil.h"
 
 // defaults entry for disclaimer
 #define DefaultsUserDisclaimerConfirmed @"DefaultsUserDisplaimerConfirmed"

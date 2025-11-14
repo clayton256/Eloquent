@@ -12,7 +12,7 @@
 #import "ObjCSword/SwordVerseKey.h"
 #import "Indexer.h"
 #import "SwordModule+SearchKitIndex.h"
-#import "Eloquent-Swift.h"
+#import "FolderUtil.h"
 
 @interface IndexingManager () {
     /** don't start two threads */

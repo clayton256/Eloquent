@@ -2,8 +2,8 @@
 #import "ModuleListViewController.h"
 #import "ModuleListObject.h"
 #import "InstallSourceListObject.h"
+#import "FolderUtil.h"
 #import "globals.h"
-#import "Eloquent-Swift.h"
 
 // table column identifiers
 #define TABLECOL_IDENTIFIER_MODNAME @"modname"

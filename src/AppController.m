@@ -21,7 +21,7 @@
 #import "globals.h"
 #import "ModuleManager.h"
 #import "EloquentFilterProvider.h"
-#import "Eloquent-Swift.h"
+#import "FolderUtil.h"
 
 @interface AppController ()
 

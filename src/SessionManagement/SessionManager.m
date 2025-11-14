@@ -13,7 +13,7 @@
 #import "Session.h"
 #import "globals.h"
 #import "MBPreferenceController.h"
-#import "Eloquent-Swift.h"
+#import "FolderUtil.h"
 
 @interface SessionManager ()
 

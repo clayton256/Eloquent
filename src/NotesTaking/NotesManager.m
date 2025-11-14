@@ -8,8 +8,8 @@
 
 #import "NotesManager.h"
 #import "FileRepresentation.h"
+#import "FolderUtil.h"
 #import "globals.h"
-#import "Eloquent-swift.h"
 
 @interface NotesManager ()
 

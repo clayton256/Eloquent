@@ -106,8 +106,6 @@
 		A90BE4B90E66EAD0008B4B60 /* OptionsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A90BE4B80E66EAD0008B4B60 /* OptionsHeaderView.m */; };
 		A90F4BBB1CF87A3A00F76FE9 /* ModuleManageViewController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A90F4BBA1CF87A3A00F76FE9 /* ModuleManageViewController+OutlineView.m */; };
 		A90F4BBC1CF87A3A00F76FE9 /* ModuleManageViewController+OutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = A90F4BBA1CF87A3A00F76FE9 /* ModuleManageViewController+OutlineView.m */; };
-		A91085881C86368100A37026 /* FolderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91085871C86368100A37026 /* FolderUtil.swift */; };
-		A91085891C86368100A37026 /* FolderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91085871C86368100A37026 /* FolderUtil.swift */; };
 		A916FCDF0E053910009CAA2F /* ModuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A916FCDE0E053910009CAA2F /* ModuleViewController.m */; };
 		A916FCE30E0542A2009CAA2F /* ExtTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A916FCE20E0542A2009CAA2F /* ExtTextViewController.m */; };
 		A916FD6E0E0555EB009CAA2F /* BibleCombiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A916FD6D0E0555EB009CAA2F /* BibleCombiViewController.m */; };
@@ -126,6 +124,11 @@
 		A9202A2A0E59A0E80094F629 /* CommentaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9202A290E59A0E80094F629 /* CommentaryViewController.m */; };
 		A9266CFD0F882BC800BA1731 /* HostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A9266CFC0F882BC800BA1731 /* HostWindow.m */; };
 		A92819980E100F240007B767 /* Highlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = A92819970E100F240007B767 /* Highlighter.m */; };
+		A928B2EA2EC71C2A000CCA83 /* FolderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2E92EC71C2A000CCA83 /* FolderUtil.m */; };
+		A928B2EB2EC71C2A000CCA83 /* FolderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2E92EC71C2A000CCA83 /* FolderUtil.m */; };
+		A928B2F02EC71DF1000CCA83 /* FolderUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */; };
+		A928B2F32EC71F4D000CCA83 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A928B2F22EC71F4D000CCA83 /* XCTest.framework */; };
+		A928B2F42EC71F4D000CCA83 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A928B2F22EC71F4D000CCA83 /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9333AE10F6699110001BD38 /* ProgressOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9333AE00F6699110001BD38 /* ProgressOverlayViewController.m */; };
 		A9333B5D0F66CEC90001BD38 /* ProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9333B5C0F66CEC90001BD38 /* ProgressOverlayView.m */; };
 		A939B7E20E9DCED000A0A8F9 /* GenBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A939B7E10E9DCED000A0A8F9 /* GenBookViewController.m */; };
@@ -288,6 +291,8 @@
 		A941DD721C6D1A9E00B7BAF7 /* ObjCSword.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9A127A319DE9226005BCBC1 /* ObjCSword.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A941DD751C6D1A9E00B7BAF7 /* CocoPCRE.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9F61B930E00FFFD00C3A0EF /* CocoPCRE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A945CFCE0E1CA73C00FAC910 /* MouseTrackingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A945CFCD0E1CA73C00FAC910 /* MouseTrackingScrollView.m */; };
+		A947C2F32EC72265009A69D0 /* FolderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2E92EC71C2A000CCA83 /* FolderUtil.m */; };
+		A947C2F42EC7226C009A69D0 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A9545400542481 /* SessionManager.m */; };
 		A94D66D00EC2CFC9006A84CB /* WorkspaceViewHostController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94D66CF0EC2CFC9006A84CB /* WorkspaceViewHostController.m */; };
 		A95184DF0EEFAAEF002EE88C /* HUDPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95184DE0EEFAAEF002EE88C /* HUDPreviewController.m */; };
 		A955E198142612B000357B6F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A955E196142612B000357B6F /* WebViewController.m */; };
@@ -403,6 +408,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A928B2F52EC71F4D000CCA83 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A928B2F42EC71F4D000CCA83 /* XCTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A941DD711C6D1A9E00B7BAF7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -540,8 +556,6 @@
 		A90FB94C25613F2F00ED59D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ModuleListUI.xib; sourceTree = "<group>"; };
 		A90FB94D25613F2F00ED59D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PrintAccessory.xib; sourceTree = "<group>"; };
 		A90FB94E25613F2F00ED59D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DailyDevotion.xib; sourceTree = "<group>"; };
-		A91085851C86368100A37026 /* Eloquent-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Eloquent-Bridging-Header.h"; sourceTree = "<group>"; };
-		A91085871C86368100A37026 /* FolderUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FolderUtil.swift; path = src/Utils/FolderUtil.swift; sourceTree = "<group>"; };
 		A9148EB50E0CEDFB00C384B9 /* ProtocolHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProtocolHelper.h; path = src/UserInterface/ProtocolHelper.h; sourceTree = "<group>"; };
 		A916FCDD0E053910009CAA2F /* ModuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModuleViewController.h; path = src/UserInterface/ModuleViewController.h; sourceTree = "<group>"; };
 		A916FCDE0E053910009CAA2F /* ModuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ModuleViewController.m; path = src/UserInterface/ModuleViewController.m; sourceTree = "<group>"; };
@@ -614,6 +628,10 @@
 		A927768F19A2296E00670FCB /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A92819960E100F240007B767 /* Highlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Highlighter.h; sourceTree = "<group>"; };
 		A92819970E100F240007B767 /* Highlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Highlighter.m; sourceTree = "<group>"; };
+		A928B2E82EC71C2A000CCA83 /* FolderUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FolderUtil.h; path = src/Utils/FolderUtil.h; sourceTree = "<group>"; };
+		A928B2E92EC71C2A000CCA83 /* FolderUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FolderUtil.m; path = src/Utils/FolderUtil.m; sourceTree = "<group>"; };
+		A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FolderUtilTests.m; path = test/FolderUtilTests.m; sourceTree = "<group>"; };
+		A928B2F22EC71F4D000CCA83 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A9333ADF0F6699110001BD38 /* ProgressOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressOverlayViewController.h; path = src/ProgressOverlayView/ProgressOverlayViewController.h; sourceTree = "<group>"; };
 		A9333AE00F6699110001BD38 /* ProgressOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressOverlayViewController.m; path = src/ProgressOverlayView/ProgressOverlayViewController.m; sourceTree = "<group>"; };
 		A9333B5B0F66CEC90001BD38 /* ProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressOverlayView.h; path = src/ProgressOverlayView/ProgressOverlayView.h; sourceTree = "<group>"; };
@@ -791,8 +809,8 @@
 		C01FCF5008A954540054247E /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Session.m; path = src/SessionManagement/Session.m; sourceTree = "<group>"; };
 		C01FCF5008A9545400542480 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionManager.h; path = src/SessionManagement/SessionManager.h; sourceTree = "<group>"; };
 		C01FCF5008A9545400542481 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionManager.m; path = src/SessionManagement/SessionManager.m; sourceTree = "<group>"; };
-		C01FCF5008A9545400542483 /* SessionManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManagerTest.h; sourceTree = "<group>"; };
-		C01FCF5008A9545400542484 /* SessionManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManagerTest.m; sourceTree = "<group>"; };
+		C01FCF5008A9545400542483 /* SessionManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionManagerTest.h; path = test/SessionManagerTest.h; sourceTree = "<group>"; };
+		C01FCF5008A9545400542484 /* SessionManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionManagerTest.m; path = test/SessionManagerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -827,6 +845,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A928B2F32EC71F4D000CCA83 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,8 +859,8 @@
 				A91C93DC0DF9B0E9006B7361 /* AppController.m */,
 				A97561EC12A2779000A7661B /* SwordUrlProtocol.h */,
 				A97561ED12A2779000A7661B /* SwordUrlProtocol.m */,
-				A91085871C86368100A37026 /* FolderUtil.swift */,
-				A91085851C86368100A37026 /* Eloquent-Bridging-Header.h */,
+				A928B2E82EC71C2A000CCA83 /* FolderUtil.h */,
+				A928B2E92EC71C2A000CCA83 /* FolderUtil.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -924,6 +943,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A928B2F22EC71F4D000CCA83 /* XCTest.framework */,
 				A9EB979D255EE4FA00C69FCA /* FooLogger.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
@@ -1356,8 +1376,9 @@
 		A9D9F5260EAF15410035222E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				C01FCF5008A9545400542484 /* SessionManagerTest.m */,
+				A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */,
 				C01FCF5008A9545400542483 /* SessionManagerTest.h */,
+				C01FCF5008A9545400542484 /* SessionManagerTest.m */,
 				A9D9F5270EAF156D0035222E /* BookmarkManagerTest.h */,
 				A9D9F5280EAF156D0035222E /* BookmarkManagerTest.m */,
 				A98A9528112E989C00EC8B76 /* ObjectAssotiationsTest.h */,
@@ -1492,8 +1513,8 @@
 			buildPhases = (
 				A9D9F5150EAF151E0035222E /* Resources */,
 				A9D9F5170EAF151E0035222E /* Frameworks */,
-				A9D9F5180EAF151E0035222E /* ShellScript */,
 				A95D5241105D47DC00FE9A24 /* Sources */,
+				A928B2F52EC71F4D000CCA83 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1754,19 +1775,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/bin/ruby increment_buildnumber.rb\n/usr/bin/ruby write_buildnumber.rb\n";
 		};
-		A9D9F5180EAF151E0035222E /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1806,7 +1814,7 @@
 				A98810340EB4A6820066943B /* SideBarViewController.m in Sources */,
 				A98810370EB4A9350066943B /* LeftSideBarViewController.m in Sources */,
 				A9D102590EC1ED0A0023FF23 /* WindowHostController.m in Sources */,
-				A91085881C86368100A37026 /* FolderUtil.swift in Sources */,
+				A928B2EA2EC71C2A000CCA83 /* FolderUtil.m in Sources */,
 				A94D66D00EC2CFC9006A84CB /* WorkspaceViewHostController.m in Sources */,
 				A93E7DFA0ED69FAB007B0533 /* SearchTextObject.m in Sources */,
 				A95184DF0EEFAAEF002EE88C /* HUDPreviewController.m in Sources */,
@@ -1906,6 +1914,7 @@
 				A941DD1F1C6D1A9E00B7BAF7 /* MouseTrackingScrollView.m in Sources */,
 				A941DD201C6D1A9E00B7BAF7 /* CommentaryViewController.m in Sources */,
 				A941DD221C6D1A9E00B7BAF7 /* DictionaryViewController.m in Sources */,
+				A928B2EB2EC71C2A000CCA83 /* FolderUtil.m in Sources */,
 				A941DD231C6D1A9E00B7BAF7 /* OptionsHeaderView.m in Sources */,
 				A941DD241C6D1A9E00B7BAF7 /* GenBookViewController.m in Sources */,
 				A941DD251C6D1A9E00B7BAF7 /* Bookmark.m in Sources */,
@@ -1913,7 +1922,6 @@
 				A941DD271C6D1A9E00B7BAF7 /* SideBarViewController.m in Sources */,
 				A941DD281C6D1A9E00B7BAF7 /* LeftSideBarViewController.m in Sources */,
 				A941DD291C6D1A9E00B7BAF7 /* WindowHostController.m in Sources */,
-				A91085891C86368100A37026 /* FolderUtil.swift in Sources */,
 				A941DD2A1C6D1A9E00B7BAF7 /* WorkspaceViewHostController.m in Sources */,
 				A941DD2B1C6D1A9E00B7BAF7 /* SearchTextObject.m in Sources */,
 				A941DD2C1C6D1A9E00B7BAF7 /* HUDPreviewController.m in Sources */,
@@ -1983,8 +1991,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A947C2F42EC7226C009A69D0 /* SessionManager.m in Sources */,
 				A98A9539112E9A6100EC8B76 /* ObjectAssociations.m in Sources */,
+				A928B2F02EC71DF1000CCA83 /* FolderUtilTests.m in Sources */,
 				A98A952A112E989C00EC8B76 /* ObjectAssotiationsTest.m in Sources */,
+				A947C2F32EC72265009A69D0 /* FolderUtil.m in Sources */,
 				C01FCF5008A9545400542485 /* SessionManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2472,9 +2483,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 27XS5W9C3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\"$(SRCROOT)/Resources\"",
@@ -2501,14 +2515,14 @@
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
-					"-framework",
-					SenTestingKit,
 					"-lcurl",
 					"-lz",
 					"-licucore",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crosswire.eloquent.--PRODUCT-NAME-identifier-";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = org.crosswire.eloquent.Tests;
 				PRODUCT_NAME = Tests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -2518,10 +2532,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 27XS5W9C3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\"$(SRCROOT)/Resources\"",
@@ -2540,11 +2557,11 @@
 				OTHER_LDFLAGS = (
 					"-framework",
 					Cocoa,
-					"-framework",
-					SenTestingKit,
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yourcompany.${PRODUCT_NAME:identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.crosswire.eloquent.--PRODUCT-NAME-identifier-";
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = org.crosswire.eloquent.Tests;
 				PRODUCT_NAME = Tests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

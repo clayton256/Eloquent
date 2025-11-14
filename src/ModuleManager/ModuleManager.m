@@ -10,7 +10,7 @@
 #import "ModuleManageViewController.h"
 #import "MBPreferenceController.h"
 #import "ConfirmationSheetController.h"
-#import "Eloquent-Swift.h"
+#import "FolderUtil.h"
 
 // toolbar identifiers
 #define TB_SYNC_ISLIST_ITEM             @"ISSyncFromMaster"

@@ -11,7 +11,7 @@
 #import "Bookmark.h"
 #import "ObjCSword/SwordListKey.h"
 #import "ObjCSword/SwordVerseKey.h"
-#import "Eloquent-Swift.h"
+#import "FolderUtil.h"
 
 @interface BookmarkManager ()
 
