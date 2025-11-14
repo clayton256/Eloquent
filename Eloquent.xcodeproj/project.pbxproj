@@ -127,8 +127,6 @@
 		A928B2EA2EC71C2A000CCA83 /* FolderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2E92EC71C2A000CCA83 /* FolderUtil.m */; };
 		A928B2EB2EC71C2A000CCA83 /* FolderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2E92EC71C2A000CCA83 /* FolderUtil.m */; };
 		A928B2F02EC71DF1000CCA83 /* FolderUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */; };
-		A928B2F32EC71F4D000CCA83 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A928B2F22EC71F4D000CCA83 /* XCTest.framework */; };
-		A928B2F42EC71F4D000CCA83 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A928B2F22EC71F4D000CCA83 /* XCTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A9333AE10F6699110001BD38 /* ProgressOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9333AE00F6699110001BD38 /* ProgressOverlayViewController.m */; };
 		A9333B5D0F66CEC90001BD38 /* ProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9333B5C0F66CEC90001BD38 /* ProgressOverlayView.m */; };
 		A939B7E20E9DCED000A0A8F9 /* GenBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A939B7E10E9DCED000A0A8F9 /* GenBookViewController.m */; };
@@ -292,7 +290,11 @@
 		A941DD751C6D1A9E00B7BAF7 /* CocoPCRE.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9F61B930E00FFFD00C3A0EF /* CocoPCRE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		A945CFCE0E1CA73C00FAC910 /* MouseTrackingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A945CFCD0E1CA73C00FAC910 /* MouseTrackingScrollView.m */; };
 		A947C2F32EC72265009A69D0 /* FolderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2E92EC71C2A000CCA83 /* FolderUtil.m */; };
-		A947C2F42EC7226C009A69D0 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A9545400542481 /* SessionManager.m */; };
+		A947C2F82EC789A6009A69D0 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A954540054247E /* Session.m */; };
+		A947C2FA2EC78ADF009A69D0 /* FooLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EB979D255EE4FA00C69FCA /* FooLogger.framework */; };
+		A947C2FB2EC78ADF009A69D0 /* FooLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A9EB979D255EE4FA00C69FCA /* FooLogger.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A947C2FD2EC78AE0009A69D0 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A928B2F22EC71F4D000CCA83 /* XCTest.framework */; };
+		A947C2FE2EC78AE0009A69D0 /* XCTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A928B2F22EC71F4D000CCA83 /* XCTest.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A94D66D00EC2CFC9006A84CB /* WorkspaceViewHostController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94D66CF0EC2CFC9006A84CB /* WorkspaceViewHostController.m */; };
 		A95184DF0EEFAAEF002EE88C /* HUDPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A95184DE0EEFAAEF002EE88C /* HUDPreviewController.m */; };
 		A955E198142612B000357B6F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A955E196142612B000357B6F /* WebViewController.m */; };
@@ -387,10 +389,16 @@
 		A9FD34220E0A70F6001287DD /* MBPreferenceController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9FD34200E0A70F6001287DD /* MBPreferenceController.m */; };
 		C01FCF5008A954540054247F /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A954540054247E /* Session.m */; };
 		C01FCF5008A9545400542482 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A9545400542481 /* SessionManager.m */; };
-		C01FCF5008A9545400542485 /* SessionManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A9545400542484 /* SessionManagerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A947C2FF2EC78B31009A69D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
+			remoteInfo = Eloquent;
+		};
 		A9CA81AB12D0B99A005346FD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -408,17 +416,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A928B2F52EC71F4D000CCA83 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A928B2F42EC71F4D000CCA83 /* XCTest.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A941DD711C6D1A9E00B7BAF7 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -428,6 +425,18 @@
 				A941DD721C6D1A9E00B7BAF7 /* ObjCSword.framework in CopyFiles */,
 				A941DD751C6D1A9E00B7BAF7 /* CocoPCRE.framework in CopyFiles */,
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A947C2FC2EC78ADF009A69D0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A947C2FB2EC78ADF009A69D0 /* FooLogger.framework in Embed Frameworks */,
+				A947C2FE2EC78AE0009A69D0 /* XCTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A9F61C8A0E0102D900C3A0EF /* CopyFiles */ = {
@@ -845,7 +854,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A928B2F32EC71F4D000CCA83 /* XCTest.framework in Frameworks */,
+				A947C2FA2EC78ADF009A69D0 /* FooLogger.framework in Frameworks */,
+				A947C2FD2EC78AE0009A69D0 /* XCTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1514,11 +1524,12 @@
 				A9D9F5150EAF151E0035222E /* Resources */,
 				A9D9F5170EAF151E0035222E /* Frameworks */,
 				A95D5241105D47DC00FE9A24 /* Sources */,
-				A928B2F52EC71F4D000CCA83 /* Embed Frameworks */,
+				A947C2FC2EC78ADF009A69D0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A947C3002EC78B31009A69D0 /* PBXTargetDependency */,
 			);
 			name = Tests;
 			productName = Tests;
@@ -1991,18 +2002,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A947C2F42EC7226C009A69D0 /* SessionManager.m in Sources */,
 				A98A9539112E9A6100EC8B76 /* ObjectAssociations.m in Sources */,
 				A928B2F02EC71DF1000CCA83 /* FolderUtilTests.m in Sources */,
 				A98A952A112E989C00EC8B76 /* ObjectAssotiationsTest.m in Sources */,
 				A947C2F32EC72265009A69D0 /* FolderUtil.m in Sources */,
-				C01FCF5008A9545400542485 /* SessionManagerTest.m in Sources */,
+				A947C2F82EC789A6009A69D0 /* Session.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A947C3002EC78B31009A69D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* Eloquent */;
+			targetProxy = A947C2FF2EC78B31009A69D0 /* PBXContainerItemProxy */;
+		};
 		A9CA81AC12D0B99A005346FD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A9CA81A512D0B946005346FD /* WriteBuildnumber */;
@@ -2492,6 +2507,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\"$(SRCROOT)/Resources\"",
+					"$(PROJECT_DIR)/Resources",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2542,6 +2558,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 					"\"$(SRCROOT)/Resources\"",
+					"$(PROJECT_DIR)/Resources",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
