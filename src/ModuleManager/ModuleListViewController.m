@@ -321,32 +321,35 @@
 #pragma mark - Notifications
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {
-    if(aNotification != nil) {
-        NSSearchField *sf = [aNotification object];
-        
-        // get text
-        NSString *searchStr = [sf stringValue];
-        
-        if([searchStr length] > 0) {
-            // create result array
-            NSMutableArray *resultArray = [NSMutableArray array];
-            
-            // init Reg ex
-            Regex *regex = [Regex regexWithPattern:searchStr];
-            [regex setCaseSensitive:NO];
+    if(aNotification == nil) {
+        return;
+    }
 
-            for(ModuleListObject *mod in self.moduleData) {
-                // try to match against name of module
-                if([regex matchIn:[[mod module] name] matchResult:nil] == RegexMatch) {
-                    [resultArray addObject:mod];
-                }
+    NSSearchField *sf = [aNotification object];
+    
+    // get text
+    NSString *searchStr = [sf stringValue];
+    searchStr = [searchStr stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    
+    if([searchStr length] > 0) {
+        // create result array
+        NSMutableArray *resultArray = [NSMutableArray array];
+        
+        // init Reg ex
+        Regex *regex = [Regex regexWithPattern:searchStr];
+        [regex setCaseSensitive:NO];
+
+        for(ModuleListObject *mod in self.moduleData) {
+            // try to match against name of module
+            if([regex matchIn:[[mod module] name] matchResult:nil] == RegexMatch) {
+                [resultArray addObject:mod];
             }
-            [self setModuleData:resultArray];
-            
-            [moduleOutlineView reloadData];
-        } else {
-            [self refreshModulesList];
         }
+        [self setModuleData:resultArray];
+        
+        [moduleOutlineView reloadData];
+    } else {
+        [self refreshModulesList];
     }
 }
 
