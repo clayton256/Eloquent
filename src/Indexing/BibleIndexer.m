@@ -220,7 +220,7 @@ SearchBookSet *searchBookSet;
     }
     [accessLock unlock];
     
-    return array;
+    return [NSArray arrayWithArray:array];
 }
 
 @end
