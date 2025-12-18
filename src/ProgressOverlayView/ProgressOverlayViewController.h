@@ -9,15 +9,22 @@
 #import <Cocoa/Cocoa.h>
 #import <FooLogger/CocoLogger.h>
 
+@class ProgressOverlayViewController;
+
+@protocol ProgressOverlayViewDelegate <NSObject>
+@optional
+- (void)contentViewInitFinished:(ProgressOverlayViewController *)controller;
+@end
+
 @interface ProgressOverlayViewController : NSViewController <IndexCreationProgressing> {
     // Progress overlay view
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSProgressIndicator *barProgressIndicator;
-    IBOutlet id __strong delegate;
+    IBOutlet id <ProgressOverlayViewDelegate> __strong delegate;
     IBOutlet NSView *barProgressView;
 }
 
-@property (strong, readwrite) id delegate;
+@property (strong, readwrite) id <ProgressOverlayViewDelegate> delegate;
 @property (readonly) NSView *barProgressView;
 
 + (ProgressOverlayViewController *)defaultController;

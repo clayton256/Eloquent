@@ -22,7 +22,7 @@
 - (void)drawRect:(NSRect)rect {
     
     // we draw a filled rect with dark color
-    CGContextRef currentContext = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+    CGContextRef currentContext = (CGContextRef)[[NSGraphicsContext currentContext] CGContext];
     CGContextSaveGState(currentContext);
     
     [[NSColor colorWithCalibratedRed:0.4f green:0.4f blue:0.4f alpha:0.3f] set];
