@@ -341,7 +341,8 @@
 
         for(ModuleListObject *mod in self.moduleData) {
             // try to match against name of module
-            if([regex matchIn:[[mod module] name] matchResult:nil] == RegexMatch) {
+            if(([regex matchIn:[[mod module] name] matchResult:nil] == RegexMatch) ||
+               ([regex matchIn:[[mod module] descr] matchResult:nil] == RegexMatch)) {
                 [resultArray addObject:mod];
             }
         }
