@@ -173,7 +173,7 @@ SearchBookSet *searchBookSet;
                 // get doc name
                 NSString *docName = (__bridge NSString *)SKDocumentGetName(hit);
                 // check for an existing range
-                BOOL addDoc = YES;
+                BOOL addDoc = NO;
                 if([searchBookSet count] > 0) {
                     // extract versekey information
                     addDoc = NO;
