@@ -384,7 +384,7 @@
     return (([anItem isKindOfClass:[FileRepresentation class]] && [(FileRepresentation *)anItem isDirectory]) || (anItem == notesRootItem));
 }
 
-- (BOOL)outlineView:(NSOutlineView *)aOutlineView acceptDrop:(id < NSDraggingInfo >)info item:(id)item childIndex:(NSInteger)index {
+- (BOOL)outlineView:(NSOutlineView *)aOutlineView acceptDrop:(id <NSDraggingInfo>)info item:(id)item childIndex:(NSInteger)index {
     // get our data from the paste board
     NSPasteboard* pboard = [info draggingPasteboard];
     if([pboard dataForType:DD_BOOKMARK_TYPE]) {
@@ -559,7 +559,6 @@
 }
 
 - (void)outlineView:(NSOutlineView *)aOutlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {
-
     if([cell isKindOfClass:[ThreeCellsCell class]]) {
         [(ThreeCellsCell *)cell setImage:nil];
         [(ThreeCellsCell *)cell setRightImage:nil];

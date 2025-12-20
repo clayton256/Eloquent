@@ -30,7 +30,10 @@ enum BookmarkMenu_Items {
 
 @interface BookmarksUIController ()
 
-- (void)_createMenuStructure:(NSMenu *)menu fromBookmarkTree:(NSArray *)bookmarkList menuTarget:(id)aTarget menuSelector:(SEL)aSelector;
+- (void)_createMenuStructure:(NSMenu *)menu
+            fromBookmarkTree:(NSArray *)bookmarkList
+                  menuTarget:(id)aTarget
+                menuSelector:(SEL)aSelector;
 - (void)updateBookmarkSelection;
 
 @end
@@ -114,11 +117,9 @@ enum BookmarkMenu_Items {
     // bring up bookmark panel
     bookmarkAction = BookmarkMenuAddNewBM;
     NSWindow *window = [hostingDelegate window];
-    [NSApp beginSheet:bookmarkDetailPanel
-       modalForWindow:window
-        modalDelegate:self
-       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-          contextInfo:nil];
+    [window beginSheet:bookmarkDetailPanel completionHandler:^(NSModalResponse returnCode) {
+        // Sheet dismissed
+    }];
 }
 
 - (void)bookmarkDialogForVerseList:(NSArray *)aVerseList {
@@ -132,11 +133,9 @@ enum BookmarkMenu_Items {
     
     bookmarkAction = BookmarkMenuAddNewBM;
     NSWindow *window = [hostingDelegate window];
-    [NSApp beginSheet:bookmarkDetailPanel
-       modalForWindow:window
-        modalDelegate:self
-       didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-          contextInfo:nil];
+    [window beginSheet:bookmarkDetailPanel completionHandler:^(NSModalResponse returnCode) {
+        // Sheet dismissed
+    }];
 }
 
 - (void)updateBookmarkSelection {
@@ -206,11 +205,9 @@ enum BookmarkMenu_Items {
             // bring up bookmark panel
             [bookmarkDetailPanel makeFirstResponder:bookmarkNameTextField];
             NSWindow *window = [hostingDelegate window];
-            [NSApp beginSheet:bookmarkDetailPanel
-               modalForWindow:window
-                modalDelegate:self
-               didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-                  contextInfo:nil];
+            [window beginSheet:bookmarkDetailPanel completionHandler:^(NSModalResponse returnCode) {
+                // Sheet dismissed
+            }];
             break;
         }
         case BookmarkMenuAddNewBMFolder:
@@ -219,11 +216,9 @@ enum BookmarkMenu_Items {
             [bookmarkFolderWindow makeFirstResponder:bookmarkFolderNameTextField];
             [bookmarkOkButton setEnabled:NO];
             NSWindow *window = [hostingDelegate window];
-            [NSApp beginSheet:bookmarkFolderWindow
-               modalForWindow:window
-                modalDelegate:self
-               didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-                  contextInfo:nil];
+            [window beginSheet:bookmarkFolderWindow completionHandler:^(NSModalResponse returnCode) {
+                // Sheet dismissed
+            }];
             break;
         }
         case BookmarkMenuEditBM:
@@ -236,33 +231,29 @@ enum BookmarkMenu_Items {
                 [bookmarkDetailPanel makeFirstResponder:bookmarkNameTextField];
                 [bookmarkOkButton setEnabled:YES];
                 NSWindow *window = [hostingDelegate window];
-                [NSApp beginSheet:bookmarkDetailPanel 
-                   modalForWindow:window 
-                    modalDelegate:self 
-                   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-                      contextInfo:nil];                
+                [window beginSheet:bookmarkDetailPanel completionHandler:^(NSModalResponse returnCode) {
+                    // Sheet dismissed
+                }];                
             } else {
                 bookmarkAction = BookmarkMenuEditBMFolder;
                 [bookmarkFolderWindow makeFirstResponder:bookmarkFolderNameTextField];
                 [bookmarkFolderNameTextField setStringValue:[bm name]];
                 [bookmarkOkButton setEnabled:NO];
                 NSWindow *window = [hostingDelegate window];
-                [NSApp beginSheet:bookmarkFolderWindow
-                   modalForWindow:window
-                    modalDelegate:self
-                   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
-                      contextInfo:nil];                
+                [window beginSheet:bookmarkFolderWindow completionHandler:^(NSModalResponse returnCode) {
+                    // Sheet dismissed
+                }];                
             }
             break;
         }
         case BookmarkMenuRemoveBM:
         {
             // confirm by user
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"ConfirmBookmarkDelete", @"")
-                                             defaultButton:NSLocalizedString(@"Yes", @"") 
-                                           alternateButton:NSLocalizedString(@"No", @"") 
-                                               otherButton:nil 
-                                 informativeTextWithFormat:NSLocalizedString(@"ConfirmBookmarkDeleteText", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"ConfirmBookmarkDelete", @"")];
+            [alert setInformativeText:NSLocalizedString(@"ConfirmBookmarkDeleteText", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
             if([alert runModal] == NSAlertFirstButtonReturn) {
                 [self updateBookmarkSelection];
                 for(Bookmark *b in bookmarkSelection) {
@@ -363,12 +354,6 @@ enum BookmarkMenu_Items {
     
     [bookmarkManager saveBookmarks];
     [self delegateReload];
-}
-
-// end sheet callback
-- (void)sheetDidEnd:(NSWindow *)sSheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	// hide sheet
-	[sSheet orderOut:nil];
 }
 
 #pragma mark - NSControl delegate methods
