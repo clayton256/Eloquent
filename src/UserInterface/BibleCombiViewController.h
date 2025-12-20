@@ -9,12 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "ProtocolHelper.h"
 #import "ModuleCommonsViewController.h"
+#import "SearchBookSetEditorController.h"
 
 #define BIBLECOMBIVIEW_NIBNAME   @"BibleCombiView"
 
 @class SwordModule, SwordBible, SwordCommentary, ScrollSynchronizableView;
 
-@interface BibleCombiViewController : ModuleCommonsViewController <NSCoding, ModuleProviding, SubviewHosting> {
+@interface BibleCombiViewController : ModuleCommonsViewController
+<NSCoding, ModuleProviding, SubviewHosting, SearchBookSetEditorDelegate> {
     IBOutlet NSTextField *lookupTF;
     IBOutlet NSButton *okBtn;
     

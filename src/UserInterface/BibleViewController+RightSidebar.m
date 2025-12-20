@@ -42,7 +42,9 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%lu-%lu", self.chapterRange.location, (self.chapterRange.location+self.chapterRange.length-1)];
+    return [NSString stringWithFormat:@"%lu-%lu",
+            self.chapterRange.location,
+            (self.chapterRange.location+self.chapterRange.length-1)];
 }
 
 @end
@@ -170,7 +172,10 @@
 	}
 }
 
-- (void)outlineView:(NSOutlineView *)aOutlineView willDisplayCell:(id)cell forTableColumn:(NSTableColumn *)tableColumn item:(id)item {    
+- (void)outlineView:(NSOutlineView *)aOutlineView
+    willDisplayCell:(id)cell
+     forTableColumn:(NSTableColumn *)tableColumn
+               item:(id)item {
 	// display call with std font
 	NSFont *font = FontStd;
 	[cell setFont:font];

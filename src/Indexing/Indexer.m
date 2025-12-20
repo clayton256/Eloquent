@@ -11,6 +11,11 @@
 #import "BookIndexer.m"
 #import "DictIndexer.m"
 
+@protocol IndexerDelegate <NSObject>
+@optional
+- (void)searchOperationFinished:(NSArray *)results;
+@end
+
 @interface Indexer ()
 
 - (void)performThreadedSearchOperation:(NSDictionary *)options;

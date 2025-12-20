@@ -10,6 +10,12 @@
 #import <FooLogger/CocoLogger.h>
 
 @class SearchBookSet;
+@class SearchBookSetEditorController;
+
+@protocol SearchBookSetEditorDelegate <NSObject>
+@optional
+- (void)indexBookSetChanged:(SearchBookSetEditorController *)controller;
+@end
 
 @interface SearchBookSetEditorController : NSViewController {
     IBOutlet NSPopUpButton *searchBookSetsPopUpButton;
@@ -27,7 +33,7 @@
 }
 
 @property (strong, readwrite) SearchBookSet *selectedBookSet;
-@property (strong, readwrite) id delegate;
+@property (strong, readwrite) id<SearchBookSetEditorDelegate> delegate;
 
 - (NSMenu *)bookSetsMenu;
 

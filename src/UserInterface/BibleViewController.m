@@ -245,7 +245,7 @@
     [super prepareContentForHost:aHostController];
     [self populateAddPopupMenu];
     [self populateBookmarksMenu];
-    [[[textContextPopUpButton menu] itemWithTag:textContext] setState:NSOnState];    
+    [[[textContextPopUpButton menu] itemWithTag:textContext] setState:NSControlStateValueOn];    
     if(searchString == nil || [searchString length] == 0) {
         [hostingDelegate setSearchText:@"Gen 1"];
     }
@@ -355,17 +355,16 @@
     
     SwordManager *sm = [SwordManager defaultManager];
     SwordModule *mod = [sm moduleWithName:[item title]];
-    if(mod) {
-        SEL selector = @selector(addNewCommentViewWithModule:);
+    if(mod && delegate) {
         if([item menu] == biblesMenu) {
-            selector = @selector(addNewBibleViewWithModule:);
-        }
-
-        if(delegate) {
-            if([delegate respondsToSelector:selector]) {
-                [delegate performSelector:selector withObject:mod];
+            if([delegate respondsToSelector:@selector(addNewBibleViewWithModule:)]) {
+                [delegate performSelector:@selector(addNewBibleViewWithModule:) withObject:mod];
             }
-        }        
+        } else {
+            if([delegate respondsToSelector:@selector(addNewCommentViewWithModule:)]) {
+                [delegate performSelector:@selector(addNewCommentViewWithModule:) withObject:mod];
+            }
+        }
     }
 }
 

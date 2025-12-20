@@ -34,7 +34,6 @@
         
 		BOOL success = [[NSBundle mainBundle] loadNibNamed:NIB_NAME owner:self topLevelObjects:nil];
 		if(success) {
-            
             // by default we use temporary bookset
             self.selectedBookSet = [self temporaryBookSet];
             
@@ -47,7 +46,6 @@
 }
 
 - (void)awakeFromNib {
-    // disable add and remove buttons
     [addButton setEnabled:NO];
     [removeButton setEnabled:NO];
         
@@ -78,7 +76,9 @@
 - (NSMenu *)bookSetsMenu {
     // build popup menu
     NSMenu *menu = [[NSMenu alloc] init];
-    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Temporary", @"") action:@selector(bookSetChanged:) keyEquivalent:@""];
+    NSMenuItem *item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Temporary", @"")
+                                                  action:@selector(bookSetChanged:)
+                                           keyEquivalent:@""];
     [item setTarget:self];
     [item setTag:0];
     [menu addItem:item];
@@ -90,7 +90,6 @@
         [item setAction:@selector(bookSetChanged:)];
         [item setTag:i];
         [menu addItem:item];
-        
         i++;
     }
     
@@ -99,7 +98,10 @@
 
 #pragma mark - NSTableView delegates
 
-- (void)tableView:(NSTableView *)aTableView willDisplayCell:(id)aCell forTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+- (void)tableView:(NSTableView *)aTableView
+  willDisplayCell:(id)aCell
+   forTableColumn:(NSTableColumn *)aTableColumn
+              row:(NSInteger)rowIndex {
 	// display call with std font
 	NSFont *font = FontStd;
 	[aCell setFont:font];
@@ -109,12 +111,10 @@
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
     NSInteger ret = [[self books] count];
-    
     return ret;
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
-    
     id ret = nil;
     
     SwordBibleBook *bb = [[self books] objectAtIndex:(NSUInteger) rowIndex];
@@ -146,26 +146,22 @@
                     enable = NO;
                 }
             }
-            
             [addButton setEnabled:enable];
-        }        
+        }
     }
 }
 
 #pragma mark - Actions
 
 - (IBAction)bookEnabled:(id)sender {
-    
     if(![selectedBookSet isPredefined]) {
         // get clicked row
         NSUInteger clickedRow = (NSUInteger) [booksTableView clickedRow];
         NSString *bookName = [[[self books] objectAtIndex:clickedRow] osisName];
         
         if([selectedBookSet containsBook:bookName]) {
-            // remove from current bookSet
-            [selectedBookSet removeBook:bookName];            
+            [selectedBookSet removeBook:bookName];
         } else {
-            // add to current bookSet
             [selectedBookSet addBook:bookName];    
         }
         
@@ -182,8 +178,9 @@
     if(tag == 0) {
         bookSet = [self temporaryBookSet];
         [removeButton setEnabled:NO];
-    } else {
-        bookSet = [[[IndexingManager sharedManager] searchBookSets] objectAtIndex:tag-1];    
+    }
+    else {
+        bookSet = [[[IndexingManager sharedManager] searchBookSets] objectAtIndex:tag-1];
         if([bookSet isPredefined]) {
             [removeButton setEnabled:NO];
         } else {
@@ -194,9 +191,9 @@
     
     // select only the selected one
     for(NSMenuItem *item in [menu itemArray]) {
-        [item setState:NSOffState];
+        [item setState:NSControlStateValueOff];
     }
-    [(NSMenuItem *)sender setState:NSOnState];
+    [(NSMenuItem *)sender setState:NSControlStateValueOn];
     
     // we may not add this same again
     [addButton setEnabled:NO];
@@ -205,8 +202,8 @@
     [booksTableView reloadData];
     
     // notify delegate about this change
-    if(delegate) {
-        [delegate performSelector:@selector(indexBookSetChanged:) withObject:self]; 
+    if(delegate && [delegate respondsToSelector:@selector(indexBookSetChanged:)]) {
+        [delegate indexBookSetChanged:self]; 
     }
     
     if([bookSet isPredefined]) {

@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <FooLogger/CocoLogger.h>
 #import "ModuleViewController.h"
+#import "SearchBookSetEditorController.h"
 
 @class SwordBible;
 @class GradientCell;
@@ -16,7 +17,8 @@
 
 #define BIBLEVIEW_NIBNAME   @"BibleView"
 
-@interface BibleViewController : ModuleViewController <NSCoding, NSOutlineViewDelegate, NSOutlineViewDataSource> {
+@interface BibleViewController : ModuleViewController
+<NSCoding, NSOutlineViewDelegate, NSOutlineViewDataSource, SearchBookSetEditorDelegate> {
     IBOutlet NSButton *closeBtn;
     IBOutlet NSPopUpButton *addPopBtn;
     IBOutlet NSPopUpButton *modulePopBtn;
