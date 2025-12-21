@@ -37,9 +37,6 @@
     // The preview text field
     IBOutlet NSTextField *tasksPreviewTextField;
     IBOutlet NSButton *processTasksButton;
-
-    // the hosting window
-    IBOutlet NSWindow *__strong parentWindow;
     
     // menus
     IBOutlet NSMenu *installSourceMenu;
@@ -49,8 +46,8 @@
 }
 
 @property (strong, readwrite) IBOutlet id delegate;
-@property (strong, readwrite) IBOutlet NSWindow *parentWindow;
 
+@property (strong, readwrite) NSWindow *parentWindow;
 @property (strong, nonatomic) NSArray *installSourceListObjects;
 @property (strong, nonatomic) NSArray *selectedInstallSources;
 

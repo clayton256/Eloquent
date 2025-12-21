@@ -285,7 +285,7 @@
                 <outlet property="delegate" destination="-2" id="94"/>
                 <outlet property="menu" destination="141" id="184"/>
             </connections>
-            <point key="canvasLocation" x="139" y="154"/>
+            <point key="canvasLocation" x="381" y="47"/>
         </splitView>
         <customObject id="55" userLabel="ModuleListViewController" customClass="ModuleListViewController">
             <connections>
@@ -377,7 +377,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="238">
-                        <rect key="frame" x="278" y="13" width="96" height="32"/>
+                        <rect key="frame" x="266" y="13" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="340">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -398,23 +398,6 @@
                             <action selector="editISTestButton:" target="-2" id="247"/>
                         </connections>
                     </button>
-                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="317">
-                        <rect key="frame" x="88" y="159" width="159" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <popUpButtonCell key="cell" type="push" title="Local" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" inset="2" selectedItem="321" id="342">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="message"/>
-                            <menu key="menu" title="OtherViews" id="319">
-                                <items>
-                                    <menuItem title="Remote" id="320"/>
-                                    <menuItem title="Local" state="on" tag="1" id="321"/>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                        <connections>
-                            <action selector="editISTypeSelect:" target="-2" id="325"/>
-                        </connections>
-                    </popUpButton>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="323">
                         <rect key="frame" x="17" y="166" width="69" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -425,7 +408,7 @@
                         </textFieldCell>
                     </textField>
                     <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="326">
-                        <rect key="frame" x="370" y="155" width="96" height="32"/>
+                        <rect key="frame" x="364" y="159" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Directory" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="344">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -489,6 +472,23 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="317">
+                        <rect key="frame" x="90" y="162" width="159" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Local" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" inset="2" selectedItem="321" id="342">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="message"/>
+                            <menu key="menu" title="OtherViews" id="319">
+                                <items>
+                                    <menuItem title="Remote" id="320"/>
+                                    <menuItem title="Local" state="on" tag="1" id="321"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <action selector="editISTypeSelect:" target="-2" id="325"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
             </view>
             <connections>
@@ -510,7 +510,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" drawsBackground="NO" id="oUf-J8-bxm">
                             <rect key="frame" x="1" y="1" width="540" height="365"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" id="360">
                                     <rect key="frame" x="0.0" y="0.0" width="540" height="365"/>
@@ -559,7 +559,7 @@ If you understand this and are willing to enable remote source features then typ
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="358">
-                            <rect key="frame" x="543" y="1" width="15" height="365"/>
+                            <rect key="frame" x="541" y="1" width="17" height="365"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -574,8 +574,17 @@ If you understand this and are willing to enable remote source features then typ
                             <action selector="confirmNo:" target="-2" id="366"/>
                         </connections>
                     </button>
+                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="372">
+                        <rect key="frame" x="17" y="48" width="565" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="!!! Please be aware that if you press NO here you will not be able to deal with remote module repositories !!!" id="373">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="363">
-                        <rect key="frame" x="393" y="12" width="96" height="32"/>
+                        <rect key="frame" x="381" y="12" width="96" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Yes" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="364">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -588,17 +597,9 @@ DQ
                             <action selector="confirmYes:" target="-2" id="367"/>
                         </connections>
                     </button>
-                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="372">
-                        <rect key="frame" x="17" y="48" width="565" height="34"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="!!! Please be aware that if you press NO here you will not be able to deal with remote module repositories !!!" id="373">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="229" y="-582"/>
         </window>
         <window title="Tasks preview" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="374">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
@@ -650,6 +651,7 @@ DQ
                     </textField>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="-548" y="-604"/>
         </window>
     </objects>
 </document>

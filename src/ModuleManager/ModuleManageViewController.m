@@ -62,7 +62,6 @@
 }
 
 - (id)initWithDelegate:(id)aDelegate parent:(NSWindow *)aParent {
-
 	self = [super init];
 	if(self == nil) {
 		CocoLog(LEVEL_ERR, @"");
@@ -91,8 +90,10 @@
 }
 
 - (void)awakeFromNib {
+    CocoLog(LEVEL_DEBUG, @"awakeFromNib");
+
     // set default menu
-    [categoryOutlineView setMenu:installSourceMenu];    
+    [categoryOutlineView setMenu:installSourceMenu];
     [categoryOutlineView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
     
     // reload data
@@ -148,24 +149,18 @@
     // start actions
     if([self hasTasks]) {
         [self checkDisclaimerValueAndShowAlertText:NSLocalizedString(@"OnlyRemoveAndInstallForLocalSources", @"")];
-        // start on new thread
-//        dispatch_async(dispatch_queue_create("TaskProcessor", NULL), ^(void) {
-            [self batchProcessTasks:[self numberOfTasks]];
+        [self batchProcessTasks:[self numberOfTasks]];
 
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             [self->modListViewController refreshSwordManager];
             [self->modListViewController refreshModulesList];
-            
-                SendNotifyModulesChanged(nil);
-            });
-//        });
-        
+            SendNotifyModulesChanged(nil);
+        });
     } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"NoPendingTasks", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"NoPendingTasks", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];        
     }
 }
@@ -182,20 +177,17 @@
 }
 
 - (IBAction)showDisclaimer {
-    if([UserDefaults stringForKey:DefaultsUserDisclaimerConfirmed] == nil || ![UserDefaults boolForKey:DefaultsUserDisclaimerConfirmed]) {
+    if([UserDefaults stringForKey:DefaultsUserDisclaimerConfirmed] == nil ||
+       ![UserDefaults boolForKey:DefaultsUserDisclaimerConfirmed]) {
         if(disclaimerWindow) {
-            [[NSApplication sharedApplication] beginSheet:disclaimerWindow 
-                                           modalForWindow:parentWindow 
-                                            modalDelegate:self 
-                                           didEndSelector:nil 
-                                              contextInfo:nil];
+            [self.parentWindow beginSheet:disclaimerWindow completionHandler:nil];
         }
     }
 }
 
 - (void)disclaimerSheetEnd {
     [disclaimerWindow close];
-    [[NSApplication sharedApplication] endSheet:disclaimerWindow];
+    [self.parentWindow endSheet:disclaimerWindow];
     
     // tell user to refresh install sources
     [self showRefreshRepositoryInformation];
@@ -220,18 +212,13 @@
         [processTasksButton setEnabled:[self hasTasks]];
         
         [tasksPreviewTextField setStringValue:[self tasksPreviewDescription]];
-        [[NSApplication sharedApplication] beginSheet:tasksPreviewWindow 
-                                       modalForWindow:parentWindow 
-                                        modalDelegate:self 
-                                       didEndSelector:nil 
-                                          contextInfo:nil];
+        [self.parentWindow beginSheet:tasksPreviewWindow completionHandler:nil];
     }
-    
 }
 
 - (void)tasksPreviewSheetEnd {
     [tasksPreviewWindow close];
-    [[NSApplication sharedApplication] endSheet:tasksPreviewWindow];
+    [self.parentWindow endSheet:tasksPreviewWindow];
 }
 
 - (IBAction)closePreview:(id)sender {
@@ -245,7 +232,6 @@
 
 /** serialize tasks for previews */
 - (NSString *)tasksPreviewDescription {
-    
     NSMutableString *ret = [NSMutableString string];
     
     if([self hasTasks]) {
@@ -274,12 +260,6 @@
     return ret;
 }
 
-#pragma mark - Menu validation
-
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
-    return YES;
-}
-
 #pragma mark - Actions
 
 - (void)renderModulesListViewWithSources:(NSArray *)sources {
@@ -291,7 +271,7 @@
 - (IBAction)syncInstallSourcesFromMasterList:(id)sender {
     if([self checkDisclaimerValueAndShowAlertText:NSLocalizedString(@"UnavailableOptionDueToNoDisclaimerComfirm", @"")]) {
         MBThreadedProgressSheetController *ps = [MBThreadedProgressSheetController standardProgressSheetController];
-        [ps setSheetWindow:parentWindow];
+        [ps setSheetWindow:self.parentWindow];
         [ps reset];
         [ps setSheetTitle:NSLocalizedString(@"WindowTitle_Progress", @"")];
         [ps setActionMessage:NSLocalizedString(@"Action_SynchingInstallSources", @"")];
@@ -340,11 +320,11 @@
         InstallSourceListObject *selected = self.selectedInstallSources[0];
         SwordInstallSource *is = [selected installSource];
         
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"Yes", @"") 
-                                       alternateButton:NSLocalizedString(@"No", @"")
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"DeleteConfirm", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"DeleteConfirm", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
         NSInteger stat = [alert runModal];
         if(stat == NSAlertFirstButtonReturn) {
             
@@ -356,11 +336,10 @@
             [categoryOutlineView reloadData];
         }
     } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"PleaseMakeSelection", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"PleaseMakeSelection", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
     }
 }
@@ -390,22 +369,20 @@
         // bring up window
         [editISWindow makeKeyAndOrderFront:self];        
     } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"PleaseMakeSelection", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"PleaseMakeSelection", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];        
     }
 }
 
 - (IBAction)refreshInstallSource:(id)sender {
     if([self.selectedInstallSources count] == 0) {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"")
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"PleaseMakeSelection", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"PleaseMakeSelection", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
         return;
     }
@@ -413,7 +390,7 @@
     if([self checkDisclaimerValueAndShowAlertText:NSLocalizedString(@"UnavailableOptionDueToNoDisclaimerComfirm", @"")]) {
         // get ThreadedProgressSheet
         MBThreadedProgressSheetController *ps = [MBThreadedProgressSheetController standardProgressSheetController];
-        [ps setSheetWindow:parentWindow];
+        [ps setSheetWindow:self.parentWindow];
         [ps setSheetTitle:NSLocalizedString(@"WindowTitle_Progress", @"")];
         [ps setActionMessage:NSLocalizedString(@"Action_RefreshingInstallSourceAction", @"")];
         [ps setCurrentStepMessage:NSLocalizedString(@"ActionStep_Refreshing", @"")];
@@ -437,11 +414,10 @@
         }
 
         if(stat != 0) {
-            NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Warning", @"")
-                                             defaultButton:NSLocalizedString(@"OK", @"")
-                                           alternateButton:nil
-                                               otherButton:nil
-                                 informativeTextWithFormat:@"%@", NSLocalizedString(@"ErrorOnRefreshingModules", @"")];
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert setMessageText:NSLocalizedString(@"Warning", @"")];
+            [alert setInformativeText:NSLocalizedString(@"ErrorOnRefreshingModules", @"")];
+            [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
             [alert runModal];
         }
 
@@ -463,11 +439,10 @@
        ([[editISDirCell stringValue] length] == 0) ||
        ([[editISSourceCell stringValue] length] == 0)) {
         // not valid
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Warning", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"OneOrMoreEmptyFields", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Warning", @"")];
+        [alert setInformativeText:NSLocalizedString(@"OneOrMoreEmptyFields", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
         
         error = YES;
@@ -495,7 +470,6 @@
     }
 
     if(!error) {
-
         if(is == nil) { // this is "add", not "edit" operation
             is = [[SwordInstallSource alloc] initWithType:@"FTP"];
         }
@@ -525,43 +499,44 @@
     NSString *dir = [editISDirCell stringValue];
     NSString *host = [editISSourceCell stringValue];
     
-    NSData *data = nil;
     if([host isEqualToString:@"localhost"]) {
         // check for existence of directory
         NSString *modDir = [dir stringByAppendingPathComponent:@"mods.d"];
         NSFileManager *fm = [NSFileManager defaultManager];
-        if([fm fileExistsAtPath:modDir]) {
-            data = [NSData data];
-        }
+        BOOL exists = [fm fileExistsAtPath:modDir];
+        
+        [self showTestResultWithSuccess:exists];
     } else {
         if([self checkDisclaimerValueAndShowAlertText:NSLocalizedString(@"UnavailableOptionDueToNoDisclaimerComfirm", @"")]) {        
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"ftp://%@%@/mods.d.tar.gz", host, dir]];
-            
-            NSURLResponse *response = [[NSURLResponse alloc] init];
             NSURLRequest *request = [NSURLRequest requestWithURL:url];
-            data = [NSURLConnection sendSynchronousRequest:request 
-                                         returningResponse:&response error:nil];
+            
+            NSURLSession *session = [NSURLSession sharedSession];
+            NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                        completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    BOOL success = (data != nil && error == nil);
+                    [self showTestResultWithSuccess:success];
+                });
+            }];
+            [dataTask resume];
         } else {
-            data = nil;
+            [self showTestResultWithSuccess:NO];
         }
     }
-    
-    // if data is not nil, this URL is valid
-    if(!data) {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Warning", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"ISNotValid", @"")];
-        [alert runModal];
+}
+
+- (void)showTestResultWithSuccess:(BOOL)success {
+    NSAlert *alert = [[NSAlert alloc] init];
+    if(!success) {
+        [alert setMessageText:NSLocalizedString(@"Warning", @"")];
+        [alert setInformativeText:NSLocalizedString(@"ISNotValid", @"")];
     } else {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"") 
-                                       alternateButton:nil
-                                           otherButton:nil 
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"ISValidInformation", @"")];
-        [alert runModal];        
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"ISValidInformation", @"")];
     }
+    [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
+    [alert runModal];
 }
 
 - (IBAction)editISDirSelectButton:(id)sender {
@@ -598,7 +573,7 @@
 
     // get ThreadedProgressSheet
     MBThreadedProgressSheetController *pSheet = [MBThreadedProgressSheetController standardProgressSheetController];
-    [pSheet setSheetWindow:parentWindow];
+    [pSheet setSheetWindow:self.parentWindow];
     [pSheet setMinProgressValue:@0.0];
     [pSheet reset];
     [pSheet setShouldKeepTrackOfProgress:@YES];
@@ -754,11 +729,10 @@
     SwordInstallSourceManager *sis = [SwordInstallSourceManager defaultManager];
     BOOL confirmed = [sis userDisclaimerConfirmed];
     if(!confirmed) {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"")
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"%@", aText];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:aText];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
     }
     return confirmed;
@@ -768,11 +742,10 @@
     SwordInstallSourceManager *sis = [SwordInstallSourceManager defaultManager];
     BOOL confirmed = [sis userDisclaimerConfirmed];
     if(confirmed) {
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"Information", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"")
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:@"%@", NSLocalizedString(@"Info_RememberToRefreshRepositories", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"Information", @"")];
+        [alert setInformativeText:NSLocalizedString(@"Info_RememberToRefreshRepositories", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
     }
 }

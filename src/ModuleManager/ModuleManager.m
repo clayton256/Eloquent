@@ -39,8 +39,8 @@
 	if(self) {
         // init install manager
         self.installSourceManager = [[SwordInstallSourceManager alloc]
-                                                           initWithPath:[[FolderUtil urlForInstallMgrModulesFolder] path]
-                                                           createPath:YES];
+                                     initWithPath:[[FolderUtil urlForInstallMgrModulesFolder] path]
+                                     createPath:YES];
         [self.installSourceManager setFtpPassword:@"eloquent@crosswire.org"];
         [self.installSourceManager useAsDefaultManager];
         [self.installSourceManager initManager];
@@ -65,6 +65,8 @@
 //--------------------------------------------------------------------
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    CocoLog(LEVEL_DEBUG, @"awakeFromNib");
     
     tbIdentifiers = [[NSMutableDictionary alloc] init];
     [moduleViewController setParentWindow:[self window]];
