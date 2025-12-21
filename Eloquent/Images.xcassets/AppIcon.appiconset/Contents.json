@@ -1,68 +1,68 @@
 {
   "images" : [
     {
-      "size" : "16x16",
+      "filename" : "Eloquent_AI-16.png",
       "idiom" : "mac",
-      "filename" : "icon_16x16.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "16x16"
     },
     {
-      "size" : "16x16",
+      "filename" : "Eloquent_AI-32 1.png",
       "idiom" : "mac",
-      "filename" : "icon_16x16@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "16x16"
     },
     {
-      "size" : "32x32",
+      "filename" : "Eloquent_AI-32.png",
       "idiom" : "mac",
-      "filename" : "icon_32x32.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "32x32"
     },
     {
-      "size" : "32x32",
+      "filename" : "Eloquent_AI-64.png",
       "idiom" : "mac",
-      "filename" : "icon_32x32@2x.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "32x32"
     },
     {
-      "size" : "128x128",
+      "filename" : "Eloquent_AI-128.png",
       "idiom" : "mac",
-      "filename" : "Eloquent_orig-128.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "128x128"
     },
     {
-      "size" : "128x128",
+      "filename" : "Eloquent_AI-256 1.png",
       "idiom" : "mac",
-      "filename" : "Eloquent_orig-256.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "128x128"
     },
     {
-      "size" : "256x256",
+      "filename" : "Eloquent_AI-256.png",
       "idiom" : "mac",
-      "filename" : "Eloquent_orig-257.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "256x256"
     },
     {
-      "size" : "256x256",
+      "filename" : "Eloquent_AI-512 1.png",
       "idiom" : "mac",
-      "filename" : "Eloquent_orig-513.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "256x256"
     },
     {
-      "size" : "512x512",
+      "filename" : "Eloquent_AI-512.png",
       "idiom" : "mac",
-      "filename" : "Eloquent_orig-512.png",
-      "scale" : "1x"
+      "scale" : "1x",
+      "size" : "512x512"
     },
     {
-      "size" : "512x512",
+      "filename" : "Eloquent_AI.png",
       "idiom" : "mac",
-      "filename" : "Eloquent_orig-1024.png",
-      "scale" : "2x"
+      "scale" : "2x",
+      "size" : "512x512"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

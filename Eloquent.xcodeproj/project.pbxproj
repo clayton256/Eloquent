@@ -79,7 +79,6 @@
 		8C92CBE4FA7364532FFDC11C /* BibleCombiView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C92CEEC8B2FD9D949561D46 /* BibleCombiView.xib */; };
 		8C92CC520DEFCF9B9186C88C /* ResizeControl.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C92CF661E24BE786CECBAF2 /* ResizeControl.png */; };
 		8C92CC8B9274B19AC6E826D9 /* bin in Resources */ = {isa = PBXBuildFile; fileRef = 8C92CB071F7077D5532B00E5 /* bin */; };
-		8C92CC8DCA4CBE3BC298E9B4 /* Eloquent.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8C92CD568A6D1350F225F820 /* Eloquent.icns */; };
 		8C92CCACF9EABE2AA497EEBE /* NotesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C5DAE2673DAD5B39C3AF /* NotesView.xib */; };
 		8C92CD4AC9634413128E9A3E /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C98F600E66C5186FE43D /* dsa_pub.pem */; };
 		8C92CD53F4123E491DB215A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C30C2A20348F663677BE /* MainMenu.xib */; };
@@ -137,7 +136,6 @@
 		A941DCCC1C6D1A9E00B7BAF7 /* Modules in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C9A237A2CF75CF21ED60 /* Modules */; };
 		A941DCCD1C6D1A9E00B7BAF7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C5BE0B11571CFED9A67F /* Credits.rtf */; };
 		A941DCCE1C6D1A9E00B7BAF7 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C98F600E66C5186FE43D /* dsa_pub.pem */; };
-		A941DCD11C6D1A9E00B7BAF7 /* Eloquent.icns in Resources */ = {isa = PBXBuildFile; fileRef = 8C92CD568A6D1350F225F820 /* Eloquent.icns */; };
 		A941DCD41C6D1A9E00B7BAF7 /* edit_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C89E02C0DF83BADD9417 /* edit_small.png */; };
 		A941DCD51C6D1A9E00B7BAF7 /* Drawer.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C92C84D27BE7B6BC876D599 /* Drawer.png */; };
 		A941DCD61C6D1A9E00B7BAF7 /* SplitViewDividerBar.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 8C92CA6003BDF8AE99755B17 /* SplitViewDividerBar.tiff */; };
@@ -362,6 +360,8 @@
 		A9BDD36E24CDA58600506AB2 /* PSMDarkTabStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BDD36224CDA58600506AB2 /* PSMDarkTabStyle.m */; };
 		A9BDD36F24CDA58600506AB2 /* PSMTabDragAssistant.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BDD36424CDA58600506AB2 /* PSMTabDragAssistant.m */; };
 		A9C0F4230EFD67F700CFDF06 /* ConfirmationSheetController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C0F4220EFD67F700CFDF06 /* ConfirmationSheetController.m */; };
+		A9C152452EF817F00004EB1D /* Eloquent_AI-128.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C152442EF817F00004EB1D /* Eloquent_AI-128.png */; };
+		A9C152462EF817F00004EB1D /* Eloquent_AI-128.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C152442EF817F00004EB1D /* Eloquent_AI-128.png */; };
 		A9C6C5AA11394B6300A3850A /* BookmarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C6C5A911394B6300A3850A /* BookmarkCell.m */; };
 		A9CFAE0B10D79B5D0096D0B7 /* NSMutableDictionary+ModuleDisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CFAE0A10D79B5D0096D0B7 /* NSMutableDictionary+ModuleDisplaySettings.m */; };
 		A9CFAEA210D7B4C90096D0B7 /* NSDictionary+ModuleDisplaySettings.m in Sources */ = {isa = PBXBuildFile; fileRef = A9CFAEA110D7B4C90096D0B7 /* NSDictionary+ModuleDisplaySettings.m */; };
@@ -479,7 +479,6 @@
 		8C92CB071F7077D5532B00E5 /* bin */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; name = bin; path = Resources/bin; sourceTree = "<group>"; };
 		8C92CD3599DFF8622485FC5C /* SplitViewDividerDimple.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = SplitViewDividerDimple.tiff; sourceTree = "<group>"; };
 		8C92CD48C3B862B17274F21B /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
-		8C92CD568A6D1350F225F820 /* Eloquent.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Eloquent.icns; sourceTree = "<group>"; };
 		8C92CDD72BAF5E0FD879880E /* groupbookmark.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = groupbookmark.tiff; sourceTree = "<group>"; };
 		8C92CE0E5FE5C4D03A05C40B /* agt_add-to-autorun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "agt_add-to-autorun.png"; sourceTree = "<group>"; };
 		8C92CE3E37DA538A6D6EDEEA /* editdelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editdelete.png; sourceTree = "<group>"; };
@@ -769,6 +768,7 @@
 		A9BDD36524CDA58600506AB2 /* NSWindow+PSM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSWindow+PSM.h"; path = "externals/PSMTabBarControl/source/NSWindow+PSM.h"; sourceTree = "<group>"; };
 		A9C0F4210EFD67F700CFDF06 /* ConfirmationSheetController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationSheetController.h; sourceTree = "<group>"; };
 		A9C0F4220EFD67F700CFDF06 /* ConfirmationSheetController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationSheetController.m; sourceTree = "<group>"; };
+		A9C152442EF817F00004EB1D /* Eloquent_AI-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Eloquent_AI-128.png"; sourceTree = "<group>"; };
 		A9C6C5A811394B6300A3850A /* BookmarkCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkCell.h; path = src/UserInterface/BookmarkCell.h; sourceTree = "<group>"; };
 		A9C6C5A911394B6300A3850A /* BookmarkCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkCell.m; path = src/UserInterface/BookmarkCell.m; sourceTree = "<group>"; };
 		A9CFAE0910D79B5D0096D0B7 /* NSMutableDictionary+ModuleDisplaySettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+ModuleDisplaySettings.h"; sourceTree = "<group>"; };
@@ -964,9 +964,9 @@
 		8C92C4BABC01A4E5D7316945 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				A9C152442EF817F00004EB1D /* Eloquent_AI-128.png */,
 				A9BD8D2621C77FF100D7687C /* ViewControlLeftYosemite.pdf */,
 				A9BD8D2521C77FF100D7687C /* ViewControlRightYosemite.pdf */,
-				8C92CD568A6D1350F225F820 /* Eloquent.icns */,
 				8C92C89E02C0DF83BADD9417 /* edit_small.png */,
 				8C92C84D27BE7B6BC876D599 /* Drawer.png */,
 				8C92CA6003BDF8AE99755B17 /* SplitViewDividerBar.tiff */,
@@ -1600,7 +1600,6 @@
 				8C92C00EDF150F8FF43D9667 /* Modules in Resources */,
 				8C92CF43AF1A057497847E67 /* Credits.rtf in Resources */,
 				8C92CD4AC9634413128E9A3E /* dsa_pub.pem in Resources */,
-				8C92CC8DCA4CBE3BC298E9B4 /* Eloquent.icns in Resources */,
 				8C92C7633EE3519CAFA50ABB /* edit_small.png in Resources */,
 				8C92C1C4C5505E1908D39535 /* Drawer.png in Resources */,
 				A9BDD34824CDA57700506AB2 /* overflowImagePressed.tif in Resources */,
@@ -1658,6 +1657,7 @@
 				8C92C0086F908B7A64AE2BB8 /* SearchBookSetEditor.xib in Resources */,
 				8C92CB503DF4A94843E10113 /* NotesUI.xib in Resources */,
 				A9BDD34624CDA57700506AB2 /* TabClose_Front_Rollover.png in Resources */,
+				A9C152452EF817F00004EB1D /* Eloquent_AI-128.png in Resources */,
 				8C92CCACF9EABE2AA497EEBE /* NotesView.xib in Resources */,
 				8C92C2ACD5C273A18E1010BD /* BookmarkManagerUI.xib in Resources */,
 				A9BDD34524CDA57700506AB2 /* overflowImage.tiff in Resources */,
@@ -1678,7 +1678,6 @@
 				A941DCCC1C6D1A9E00B7BAF7 /* Modules in Resources */,
 				A941DCCD1C6D1A9E00B7BAF7 /* Credits.rtf in Resources */,
 				A941DCCE1C6D1A9E00B7BAF7 /* dsa_pub.pem in Resources */,
-				A941DCD11C6D1A9E00B7BAF7 /* Eloquent.icns in Resources */,
 				A941DCD41C6D1A9E00B7BAF7 /* edit_small.png in Resources */,
 				A941DCD51C6D1A9E00B7BAF7 /* Drawer.png in Resources */,
 				A941DCD61C6D1A9E00B7BAF7 /* SplitViewDividerBar.tiff in Resources */,
@@ -1697,6 +1696,7 @@
 				A941DCE31C6D1A9E00B7BAF7 /* editdelete.png in Resources */,
 				A941DCE41C6D1A9E00B7BAF7 /* exec.png in Resources */,
 				A941DCE61C6D1A9E00B7BAF7 /* minus.tiff in Resources */,
+				A9C152462EF817F00004EB1D /* Eloquent_AI-128.png in Resources */,
 				A941DCE71C6D1A9E00B7BAF7 /* plus.tiff in Resources */,
 				A941DCE81C6D1A9E00B7BAF7 /* preview.png in Resources */,
 				A941DCE91C6D1A9E00B7BAF7 /* refresh.png in Resources */,
@@ -2588,6 +2588,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -2646,6 +2647,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
