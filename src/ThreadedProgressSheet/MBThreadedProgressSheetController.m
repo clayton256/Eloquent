@@ -105,9 +105,12 @@
 
 // threaded
 - (void)setIsThreaded:(NSNumber *)aSetting {
+    [progressIndicator setUsesThreadedAnimation:[aSetting boolValue]];
+    /*
     dispatch_async(dispatch_get_main_queue(), ^{
         [self->progressIndicator setUsesThreadedAnimation:[aSetting boolValue]];
     });
+     */
 }
 
 - (BOOL)isThreaded {
@@ -115,30 +118,25 @@
 }
 
 // window title
-- (void)setSheetTitle:(NSString *)aTitle
-{
+- (void)setSheetTitle:(NSString *)aTitle {
 	[sheetWindow setTitle:aTitle];
 }
 
-- (NSString *)sheetTitle
-{
+- (NSString *)sheetTitle {
 	return [sheetWindow title];
 }
 
 // sheet Window
-- (void)setSheetWindow:(NSWindow *)aWindow
-{
+- (void)setSheetWindow:(NSWindow *)aWindow {
 	sheetWindow = aWindow;
 }
 
-- (NSWindow *)sheetWindow
-{
+- (NSWindow *)sheetWindow {
 	return sheetWindow;
 }
 
 // action message
-- (void)setActionMessage:(NSString *)aMessage
-{
+- (void)setActionMessage:(NSString *)aMessage {
 	[actionLabel setStringValue:aMessage];
     [progressIndicator display];
 }
@@ -146,15 +144,13 @@
 /**
  \brief set the current step message
  */
-- (void)setCurrentStepMessage:(NSString *)aMessage
-{
+- (void)setCurrentStepMessage:(NSString *)aMessage {
 	[currentStepLabel setStringValue:aMessage];
     [progressIndicator display];
 }
 
 // sheet return code
-- (int)sheetReturnCode
-{
+- (int)sheetReturnCode {
 	return sheetReturnCode;
 }
 
@@ -163,8 +159,7 @@
 	[progressIndicator setIndeterminate:[aSetting boolValue]];
 }
 
-- (BOOL)isIndeterminateProgress
-{
+- (BOOL)isIndeterminateProgress{
 	return [progressIndicator isIndeterminate];
 }
 

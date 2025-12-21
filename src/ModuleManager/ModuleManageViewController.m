@@ -94,7 +94,7 @@
 
     // set default menu
     [categoryOutlineView setMenu:installSourceMenu];
-    [categoryOutlineView setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleSourceList];
+    [categoryOutlineView setStyle:NSTableViewStyleSourceList];
     
     // reload data
     [categoryOutlineView reloadData];
@@ -141,7 +141,6 @@
         self.removeDict[[[modObj module] name]] = modObj;
         self.installDict[[[modObj module] name]] = modObj;
     }
-    
 }
 
 /** process all the tasks we have to do */
