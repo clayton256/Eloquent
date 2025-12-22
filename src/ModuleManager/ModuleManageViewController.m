@@ -21,6 +21,8 @@
 - (BOOL)checkDisclaimerValueAndShowAlertText:(NSString *)aText;
 - (void)showRefreshRepositoryInformation;
 
+- (void)performSelOnMain:(id)receiver selector:(SEL)aSelector object:(id)anObject;
+
 /** the array used for display in outline view */
 @property (strong, readwrite) NSMutableDictionary *installDict;
 @property (strong, readwrite) NSMutableDictionary *removeDict;
@@ -150,11 +152,17 @@
         [self checkDisclaimerValueAndShowAlertText:NSLocalizedString(@"OnlyRemoveAndInstallForLocalSources", @"")];
         [self batchProcessTasks:[self numberOfTasks]];
 
+        [self->modListViewController refreshSwordManager];
+        [self->modListViewController refreshModulesList];
+        SendNotifyModulesChanged(nil);
+
+        /*
         dispatch_async(dispatch_get_main_queue(), ^(void) {
             [self->modListViewController refreshSwordManager];
             [self->modListViewController refreshModulesList];
             SendNotifyModulesChanged(nil);
         });
+         */
     } else {
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:NSLocalizedString(@"Information", @"")];
@@ -562,14 +570,14 @@
     }
 }
 
+- (void)performSelOnMain:(id)receiver selector:(SEL)aSelector object:(id)anObject {
+    [receiver performSelectorOnMainThread:aSelector withObject:anObject waitUntilDone:YES];
+}
+
 /**
  \brief batch process tasks with separate thread to show progress in threaded progress indicator
  */
 - (void)batchProcessTasks:(NSInteger)actions {
-    // Cancel indicator
-    BOOL isCanceled = NO;
-    int error = 0;
-
     // get ThreadedProgressSheet
     MBThreadedProgressSheetController *pSheet = [MBThreadedProgressSheetController standardProgressSheetController];
     [pSheet setSheetWindow:self.parentWindow];
@@ -580,116 +588,94 @@
 
     if(actions == 1) {
         // set to indeterminate
-        [pSheet performSelectorOnMainThread:@selector(setIsIndeterminateProgress:)
-                                 withObject:@YES
-                              waitUntilDone:YES];
+        [pSheet setIsIndeterminateProgress:@YES];
     } else if(actions > 1) {
         // set to indeterminate
-        [pSheet performSelectorOnMainThread:@selector(setIsIndeterminateProgress:)
-                                 withObject:@NO
-                              waitUntilDone:YES];
-        [pSheet performSelectorOnMainThread:@selector(setMaxProgressValue:)
-                                 withObject:@(actions)
-                              waitUntilDone:YES];
+        [pSheet setIsIndeterminateProgress:@NO];
+        [pSheet setMaxProgressValue:@(actions)];
     }
 
     // begin sheet
-    [pSheet performSelectorOnMainThread:@selector(beginSheet)
-                             withObject:nil
-                          waitUntilDone:YES];
+    [pSheet beginSheet];
+    [pSheet startProgressAnimation];
 
-    // get controllers
-    SwordInstallSourceManager *sis = [SwordInstallSourceManager defaultManager];
-    SwordManager *sm = [SwordManager managerWithPath:[[FolderUtil urlForModulesFolder] path]];
+    // Run the actual work on a background thread
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // Cancel indicator
+        BOOL isCanceled = NO;
+        int error = 0;
 
-    // start animation
-    [pSheet performSelectorOnMainThread:@selector(startProgressAnimation)
-                             withObject:nil
-                          waitUntilDone:YES];
+        // get controllers
+        SwordInstallSourceManager *sis = [SwordInstallSourceManager defaultManager];
+        SwordManager *sm = [SwordManager managerWithPath:[[FolderUtil urlForModulesFolder] path]];
 
-    // first remove
-    [pSheet performSelectorOnMainThread:@selector(setActionMessage:)
-                             withObject:NSLocalizedString(@"Action_RemovingModules", @"")
-                          waitUntilDone:YES];
-
-    for(id key in [self.removeDict allKeys]) {
-        // check return value of sheet, has cancel been pressed?
-        if([pSheet sheetReturnCode] != 0) {
-            // cancel has been pressed, break import process
-            isCanceled = YES;
-        } else {
-            // increment progress
-            [pSheet performSelectorOnMainThread:@selector(incrementProgressBy:)
-                                     withObject:@1.0
-                                  waitUntilDone:YES];
-
-            ModuleListObject *modObj = self.removeDict[key];
-
-            // give some messages
-            [pSheet performSelectorOnMainThread:@selector(setCurrentStepMessage:)
-                                     withObject:[[modObj module] name]
-                                  waitUntilDone:YES];
-            // uninstall
-            int stat = [sis uninstallModule:[modObj module] fromManager:sm];
-            if(stat != 0) {
-                error++;
-            } else {
-                // shall we remove the index as well?
-                if([UserDefaults boolForKey:DefaultsRemoveIndexOnModuleRemoval]) {
-                    [[IndexingManager sharedManager] removeIndexForModuleName:[[modObj module] name]];
-                }
-            }
-        }
-    }
-    [self.removeDict removeAllObjects];
-
-    if(!isCanceled) {
-        // then install
-        [pSheet performSelectorOnMainThread:@selector(setActionMessage:)
-                                 withObject:NSLocalizedString(@"Action_InstallingModules", @"")
-                              waitUntilDone:YES];
-        for (id key in [self.installDict allKeys]) {
+        // first remove
+        [self performSelOnMain:pSheet selector:@selector(setActionMessage:) object:NSLocalizedString(@"Action_RemovingModules", @"")];
+    
+        for(id key in [self.removeDict allKeys]) {
             // check return value of sheet, has cancel been pressed?
             if([pSheet sheetReturnCode] != 0) {
                 // cancel has been pressed, break import process
                 isCanceled = YES;
             } else {
                 // increment progress
-                [pSheet performSelectorOnMainThread:@selector(incrementProgressBy:)
-                                         withObject:@1.0
-                                      waitUntilDone:YES];
+                [self performSelOnMain:pSheet selector:@selector(incrementProgressBy:) object:@1.0];
 
-                // if this is the last item to install we can make the indicator to indeterminate
-                if([pSheet progressValue] == [pSheet maxProgressValue]) {
-                    [pSheet performSelectorOnMainThread:@selector(setIsIndeterminateProgress:)
-                                             withObject:@YES
-                                          waitUntilDone:YES];
-                }
-
-                ModuleListObject *modObj = self.installDict[key];
+                ModuleListObject *modObj = self.removeDict[key];
 
                 // give some messages
-                [pSheet performSelectorOnMainThread:@selector(setCurrentStepMessage:)
-                                         withObject:[[modObj module] name]
-                                      waitUntilDone:YES];
-                // install
-                SwordInstallSource *is = [modObj installSource];
-                if([is isLocalSource] || [sis userDisclaimerConfirmed]) {
-                    int stat = [sis installModule:[modObj module] fromSource:is withManager:sm];
-                    if(stat != 0) {
-                        error++;
+                [self performSelOnMain:pSheet selector:@selector(setCurrentStepMessage:) object:[[modObj module] name]];
+                // uninstall
+                int stat = [sis uninstallModule:[modObj module] fromManager:sm];
+                if(stat != 0) {
+                    error++;
+                } else {
+                    // shall we remove the index as well?
+                    if([UserDefaults boolForKey:DefaultsRemoveIndexOnModuleRemoval]) {
+                        [[IndexingManager sharedManager] removeIndexForModuleName:[[modObj module] name]];
                     }
                 }
             }
         }
-        [self.installDict removeAllObjects];
-    }
+        [self.removeDict removeAllObjects];
 
-    [pSheet stopProgressAnimation];
+        if(!isCanceled) {
+            // then install
+            [self performSelOnMain:pSheet selector:@selector(setActionMessage:) object:NSLocalizedString(@"Action_InstallingModules", @"")];
+            for (id key in [self.installDict allKeys]) {
+                // check return value of sheet, has cancel been pressed?
+                if([pSheet sheetReturnCode] != 0) {
+                    // cancel has been pressed, break import process
+                    isCanceled = YES;
+                } else {
+                    // increment progress
+                    [self performSelOnMain:pSheet selector:@selector(incrementProgressBy:) object:@1.0];
+                    
+                    // if this is the last item to install we can make the indicator to indeterminate
+                    if([pSheet progressValue] == [pSheet maxProgressValue]) {
+                        [self performSelOnMain:pSheet selector:@selector(setIsIndeterminateProgress:) object:@YES];
+                    }
+                    
+                    ModuleListObject *modObj = self.installDict[key];
+                    
+                    // give some messages
+                    [self performSelOnMain:pSheet selector:@selector(setCurrentStepMessage:) object:[[modObj module] name]];
+                    // install
+                    SwordInstallSource *is = [modObj installSource];
+                    if([is isLocalSource] || [sis userDisclaimerConfirmed]) {
+                        int stat = [sis installModule:[modObj module] fromSource:is withManager:sm];
+                        if(stat != 0) {
+                            error++;
+                        }
+                    }
+                }
+            }
+            [self.installDict removeAllObjects];
+        }
 
-    [pSheet performSelectorOnMainThread:@selector(endSheet)
-                             withObject:nil
-                          waitUntilDone:YES];
+        [self performSelOnMain:pSheet selector:@selector(stopProgressAnimation) object:nil];
+        [self performSelOnMain:pSheet selector:@selector(endSheet) object:nil];
+    });
     [pSheet setShouldKeepTrackOfProgress:@NO];
     [pSheet setProgressAction:@(NONE_PROGRESS_ACTION)];
     [pSheet reset];

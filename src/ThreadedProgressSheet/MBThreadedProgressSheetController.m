@@ -45,8 +45,6 @@
  */
 - (void)dealloc {
 	CocoLog(LEVEL_DEBUG,@"dealloc of MBThreadedProgressSheetController");
-	
-	// dealloc object
 }
 
 /**
@@ -56,7 +54,6 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self->progressIndicator setDoubleValue:[self->progressIndicator minValue]];
         [self->cancelButton setEnabled:YES];
-        // display at once
         [self->progressIndicator display];
     });
 }
@@ -105,21 +102,28 @@
 
 // threaded
 - (void)setIsThreaded:(NSNumber *)aSetting {
-    [progressIndicator setUsesThreadedAnimation:[aSetting boolValue]];
-    /*
     dispatch_async(dispatch_get_main_queue(), ^{
         [self->progressIndicator setUsesThreadedAnimation:[aSetting boolValue]];
     });
-     */
 }
 
 - (BOOL)isThreaded {
-	return [progressIndicator usesThreadedAnimation];
+    __block BOOL value = NO;
+    if ([NSThread isMainThread]) {
+        value = [progressIndicator usesThreadedAnimation];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            value = [self->progressIndicator usesThreadedAnimation];
+        });
+    }
+    return value;
 }
 
 // window title
 - (void)setSheetTitle:(NSString *)aTitle {
-	[sheetWindow setTitle:aTitle];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->sheetWindow setTitle:aTitle];
+    });
 }
 
 - (NSString *)sheetTitle {
@@ -137,16 +141,20 @@
 
 // action message
 - (void)setActionMessage:(NSString *)aMessage {
-	[actionLabel setStringValue:aMessage];
-    [progressIndicator display];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->actionLabel setStringValue:aMessage];
+        [self->progressIndicator display];
+    });
 }
 
 /**
  \brief set the current step message
  */
 - (void)setCurrentStepMessage:(NSString *)aMessage {
-	[currentStepLabel setStringValue:aMessage];
-    [progressIndicator display];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->currentStepLabel setStringValue:aMessage];
+        [self->progressIndicator display];
+    });
 }
 
 // sheet return code
@@ -156,57 +164,108 @@
 
 // dealing with progress
 - (void)setIsIndeterminateProgress:(NSNumber *)aSetting {
-	[progressIndicator setIndeterminate:[aSetting boolValue]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setIndeterminate:[aSetting boolValue]];
+        [self->progressIndicator display];
+    });
 }
 
 - (BOOL)isIndeterminateProgress{
-	return [progressIndicator isIndeterminate];
+    __block BOOL value = NO;
+    if ([NSThread isMainThread]) {
+        value = [progressIndicator isIndeterminate];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            value = [self->progressIndicator isIndeterminate];
+        });
+    }
+    return value;
 }
 
 - (void)setIsDisplayedWhenStopped:(NSNumber *)aSetting {
-    [progressIndicator setDisplayedWhenStopped:[aSetting boolValue]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setDisplayedWhenStopped:[aSetting boolValue]];
+    });
 }
 
 - (BOOL)isDisplayedWhenStopped {
-	return [progressIndicator isDisplayedWhenStopped];
+    __block BOOL value = NO;
+    if ([NSThread isMainThread]) {
+        value = [progressIndicator isDisplayedWhenStopped];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            value = [self->progressIndicator isDisplayedWhenStopped];
+        });
+    }
+    return value;
 }
 
 - (void)setMaxProgressValue:(NSNumber *)aValue {
-    [progressIndicator setMaxValue:[aValue doubleValue]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setMaxValue:[aValue doubleValue]];
+    });
 }
 
 - (double)maxProgressValue {
-	return [progressIndicator maxValue];
+    __block double value = 0.0;
+    if ([NSThread isMainThread]) {
+        value = [progressIndicator maxValue];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            value = self->progressIndicator.maxValue;
+        });
+    }
+    return value;
 }
 
 - (void)setMinProgressValue:(NSNumber *)aValue {
-    [progressIndicator setMinValue:[aValue doubleValue]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator setMinValue:[aValue doubleValue]];
+    });
 }
 
 - (double)minProgressValue {
-	return [progressIndicator minValue];
+    __block double value = 0.0;
+    if ([NSThread isMainThread]) {
+        value = [progressIndicator minValue];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            value = self->progressIndicator.minValue;
+        });
+    }
+    return value;
 }
 
 - (void)setProgressValue:(NSNumber *)aValue {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self->progressIndicator setDoubleValue:[aValue doubleValue]];
+        [self->progressIndicator display];
     });
 }
 
 - (double)progressValue {
-	return [progressIndicator doubleValue];
+    __block double value = 0.0;
+    if ([NSThread isMainThread]) {
+        value = [progressIndicator doubleValue];
+    } else {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            value = [self->progressIndicator doubleValue];
+        });
+    }
+    return value;
 }
 
 - (void)incrementProgressBy:(NSNumber *)aValue {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self->progressIndicator incrementBy:[aValue doubleValue]];
-        // display at once
         [self->progressIndicator display];
     });
 }
 
 - (void)startProgressAnimation {
-	[progressIndicator startAnimation:nil];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->progressIndicator startAnimation:nil];
+    });
 }
 
 - (void)stopProgressAnimation {
@@ -217,8 +276,6 @@
 
 - (void)beginSheetForWindow:(NSWindow *)docWindow {
 	[self setSheetWindow:docWindow];
-	
-	// call -beginSheet
 	[self beginSheet];
 }
 
@@ -227,8 +284,6 @@
     [sheetWindow beginSheet:sheet completionHandler:^(NSModalResponse returnCode) {
         [self sheetDidEnd:self->sheet returnCode:(int)returnCode contextInfo:nil];
     }];
-    
-	// make panel key window and order front
 	[sheet makeKeyWindow];
 }
 
@@ -239,14 +294,12 @@
 
 // end sheet callback
 - (void)sheetDidEnd:(NSWindow *)sSheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-	// hide sheet
 	[sSheet orderOut:nil];
 	
 	sheetReturnCode = returnCode;
 }
 
 - (IBAction)cancelButton:(id)sender {
-	// disable button
 	[cancelButton setEnabled:NO];
 	[NSApp endSheet:sheet returnCode:CANCELED_END];
 }
