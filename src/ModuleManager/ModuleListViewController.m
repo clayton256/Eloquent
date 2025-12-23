@@ -176,7 +176,7 @@
 		
 		if(modObj != nil) {
 			
-			CocoLog(LEVEL_DEBUG, @"selected module: %x", (unsigned int)modObj);
+			CocoLog(LEVEL_DEBUG, @"selected module: %p", modObj);
 			
 			NSInteger tag = [menuItem tag];
 			

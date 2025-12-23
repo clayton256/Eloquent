@@ -1,5 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #import <FooLogger/CocoLogger.h>
+#import "ModuleListViewController.h"
 
 @class ModuleListObject;
 @class InstallSourceListObject;
@@ -11,7 +12,7 @@
 #define TYPE_TAG_REMOTE 0
 #define TYPE_TAG_LOCAL  1
 
-@interface ModuleManageViewController : NSObject <NSOutlineViewDelegate, NSOutlineViewDataSource> {
+@interface ModuleManageViewController : NSObject <NSOutlineViewDelegate, NSOutlineViewDataSource, ModuleListViewControllerDelegate> {
     
     // the views
     IBOutlet NSOutlineView *categoryOutlineView;

@@ -5,7 +5,17 @@
 #import <ObjCSword/SwordInstallSource.h>
 #import <ObjCSword/SwordModule.h>
 
-@interface ModuleListViewController : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate> {
+@class ModuleListObject;
+
+@protocol ModuleListViewControllerDelegate <NSObject>
+@optional
+- (void)unregister:(ModuleListObject *)modObj;
+- (void)registerForInstall:(ModuleListObject *)modObj;
+- (void)registerForRemove:(ModuleListObject *)modObj;
+- (void)registerForUpdate:(ModuleListObject *)modObj;
+@end
+
+@interface ModuleListViewController : NSObject <NSOutlineViewDataSource, NSOutlineViewDelegate, NSMenuItemValidation> {
     
     IBOutlet NSOutlineView *moduleOutlineView;
     IBOutlet NSSearchField *searchTextField;
@@ -16,7 +26,7 @@
 
 @property (readwrite) NSString *langFilter;
 @property (strong, readwrite) NSArray *installSources;
-@property (strong, readwrite) IBOutlet id delegate;
+@property (strong, readwrite) IBOutlet id<ModuleListViewControllerDelegate> delegate;
 
 - (void)refreshModulesList;
 - (void)refreshSwordManager;
