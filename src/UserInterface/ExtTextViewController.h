@@ -22,12 +22,25 @@
 @class MouseTrackingScrollView;
 @class MBTextView;
 
+@protocol ExtTextViewDelegate <NSObject>
+@optional
+- (NSString *)processPreviewDisplay:(NSURL *)url;
+- (void)linkClicked:(id)link;
+- (NSMenu *)menuForEvent:(NSEvent *)event;
+- (void)textChanged:(NSNotification *)notification;
+- (void)mouseEnteredView:(NSView *)view;
+- (void)mouseExitedView:(NSView *)view;
+- (void)saveDocument:(id)sender;
+@end
+
 @interface ExtTextViewController : HostableViewController <NSTextViewDelegate, MouseTracking, TextContentProviding> {
     IBOutlet MBTextView *textView;
     IBOutlet MouseTrackingScrollView *scrollView;
 }
 
-- (id)initWithDelegate:(id)aDelegate;
+@property (weak) id<ExtTextViewDelegate> delegate;
+
+- (id)initWithDelegate:(id<ExtTextViewDelegate>)aDelegate;
 
 // TextContentProviding
 - (MBTextView *)textView;

@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "HostableViewController.h"
+#import "ExtTextViewController.h"
 
 typedef enum _ContentViewType {
     SwordBibleContentType = 1,
@@ -42,7 +43,7 @@ typedef enum _ProgressActionType {
 @class ModulesUIController;
 @class ProgressOverlayViewController;
 
-@interface ContentDisplayingViewController : HostableViewController <ProgressIndicating, TextDisplayable, ContextMenuProviding> {
+@interface ContentDisplayingViewController : HostableViewController <ProgressIndicating, TextDisplayable, ContextMenuProviding, ExtTextViewDelegate> {
     IBOutlet NSView *topAccessoryView;
     IBOutlet id contentDisplayController;    
     CacheObject *contentCache;

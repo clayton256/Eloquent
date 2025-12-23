@@ -25,7 +25,7 @@
     return self;
 }
 
-- (id)initWithDelegate:(id)aDelegate {
+- (id)initWithDelegate:(id<ExtTextViewDelegate>)aDelegate {
     self = [super init];
     if(self) {
         CocoLog(LEVEL_DEBUG, @"loading nib");
@@ -96,7 +96,9 @@
 
 /** pass though to delegate */
 - (IBAction)saveDocument:(id)sender {
-    [delegate saveDocument:sender];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(saveDocument:)]) {
+        [self.delegate saveDocument:sender];
+    }
 }
 
 #pragma mark - KVO
@@ -145,8 +147,8 @@
 }
 
 - (void)textChanged:(NSNotification *)aNotification {
-    if(delegate && [delegate respondsToSelector:@selector(textChanged:)]) {
-        [delegate performSelector:@selector(textChanged:) withObject:aNotification];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(textChanged:)]) {
+        [self.delegate textChanged:aNotification];
     }
 }
 
@@ -157,8 +159,8 @@
 #pragma mark - MBTextView delegates
 
 - (NSMenu *)menuForEvent:(NSEvent *)event {
-    if(delegate) {
-        return [delegate performSelector:@selector(menuForEvent:) withObject:event];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(menuForEvent:)]) {
+        return [self.delegate menuForEvent:event];
     }
     return nil;
 }
@@ -166,19 +168,22 @@
 #pragma mark - NSTextView delegates
 
 - (NSString *)textView:(NSTextView *)aTextView willDisplayToolTip:(NSString *)tooltip forCharacterAtIndex:(NSUInteger)characterIndex {
-    NSURL *url = [NSURL URLWithString:[tooltip stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:[tooltip stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]]];
     if(!url) {
         CocoLog(LEVEL_WARN, @"no URL: %@\n", tooltip);
     } else {
-        return [delegate performSelector:@selector(processPreviewDisplay:) withObject:url];
+        if(self.delegate && [self.delegate respondsToSelector:@selector(processPreviewDisplay:)]) {
+            NSString *result = [self.delegate processPreviewDisplay:url];
+            return result;
+        }
     }
     
     return @"";
 }
 
 - (BOOL)textView:(NSTextView *)aTextView clickedOnLink:(id)link atIndex:(NSUInteger)charIndex {
-    if(delegate) {
-        [delegate performSelector:@selector(linkClicked:) withObject:link];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(linkClicked:)]) {
+        [self.delegate linkClicked:link];
     }
     return YES;
 }
@@ -189,14 +194,14 @@
 #pragma mark - mouse tracking protocol
 
 - (void)mouseEnteredView:(NSView *)theView {
-    if(delegate && [delegate respondsToSelector:@selector(mouseEnteredView:)]) {
-        [delegate performSelector:@selector(mouseEnteredView:) withObject:[self view]];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(mouseEnteredView:)]) {
+        [self.delegate mouseEnteredView:[self view]];
     }
 }
 
 - (void)mouseExitedView:(NSView *)theView {
-    if(delegate && [delegate respondsToSelector:@selector(mouseExitedView:)]) {
-        [delegate performSelector:@selector(mouseExitedView:) withObject:[self view]];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(mouseExitedView:)]) {
+        [self.delegate mouseExitedView:[self view]];
     }
 }
 
