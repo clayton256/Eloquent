@@ -26,6 +26,7 @@
     IBOutlet NSTextField *editISCaptionCell;
     IBOutlet NSTextField *editISSourceCell;
     IBOutlet NSTextField *editISDirCell;
+    IBOutlet NSProgressIndicator *editISTestProgressIndicator;
     // the type popup
     IBOutlet NSPopUpButton *editISType;
     IBOutlet NSButton *editISDirSelect;

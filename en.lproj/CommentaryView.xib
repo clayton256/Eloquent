@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="101000" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -51,7 +51,7 @@
                     <rect key="frame" x="0.0" y="484" width="600" height="15"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
+                        <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36">
                             <rect key="frame" x="276" y="0.0" width="321" height="13"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="45">
@@ -388,11 +388,11 @@
                     <rect key="frame" x="-3" y="423" width="206" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <view key="contentView" id="QLj-kt-oM0">
-                        <rect key="frame" x="3" y="3" width="200" height="58"/>
+                        <rect key="frame" x="0.0" y="0.0" width="206" height="64"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="269">
-                                <rect key="frame" x="44" y="7" width="111" height="18"/>
+                                <rect key="frame" x="46.5" y="13" width="111" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" controlSize="small" state="on" borderStyle="border" alignment="left" style="roundRect" trackingMode="momentary" id="272">
                                     <font key="font" metaFont="message" size="11"/>
@@ -409,7 +409,7 @@
                                 </connections>
                             </segmentedControl>
                             <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="270">
-                                <rect key="frame" x="44" y="31" width="111" height="18"/>
+                                <rect key="frame" x="46.5" y="37" width="111" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <segmentedCell key="cell" controlSize="small" state="on" borderStyle="border" alignment="left" style="roundRect" trackingMode="momentary" id="271">
                                     <font key="font" metaFont="message" size="11"/>
@@ -433,7 +433,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="06h-2B-SQK">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="426"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" autosaveColumns="NO" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="267" id="266">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="426"/>
@@ -477,7 +477,7 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSGoLeftTemplate" width="10" height="14"/>
-        <image name="NSGoRightTemplate" width="10" height="14"/>
+        <image name="NSGoLeftTemplate" width="12" height="17"/>
+        <image name="NSGoRightTemplate" width="12" height="17"/>
     </resources>
 </document>

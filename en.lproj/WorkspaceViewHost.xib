@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,7 +28,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="653" y="339" width="1280" height="800"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1410"/>
             <value key="minSize" type="size" width="400" height="200"/>
             <view key="contentView" id="2">
                 <rect key="frame" x="0.0" y="0.0" width="1280" height="800"/>
@@ -86,7 +86,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="167"/>
             </connections>
-            <point key="canvasLocation" x="139" y="144"/>
+            <point key="canvasLocation" x="139" y="-589"/>
         </window>
         <menu id="41">
             <items>
@@ -97,7 +97,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-136" y="-368"/>
+            <point key="canvasLocation" x="140" y="-82"/>
         </menu>
         <customView id="96" userLabel="DefaultMainView">
             <rect key="frame" x="0.0" y="0.0" width="800" height="565"/>
@@ -140,7 +140,6 @@
                     </connections>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="139" y="907"/>
         </customView>
         <customObject id="187" customClass="InitialInfoViewController">
             <connections>

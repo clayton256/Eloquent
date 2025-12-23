@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,17 +19,17 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" centeredItem="123" displayMode="iconOnly" sizeMode="regular" id="1">
+        <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" showsBaselineSeparator="NO" displayMode="iconOnly" sizeMode="regular" id="1">
             <allowedToolbarItems>
                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="142"/>
                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="129"/>
                 <toolbarItem implicitItemIdentifier="32FF0C2B-7E19-43E3-93C7-1974A5B9EE7A" explicitItemIdentifier="ReferenceTextField" label="Reference text" paletteLabel="Reference text" id="123">
                     <nil key="toolTip"/>
-                    <size key="minSize" width="50" height="22"/>
-                    <size key="maxSize" width="650" height="22"/>
-                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="109">
-                        <rect key="frame" x="0.0" y="14" width="650" height="22"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                    <size key="minSize" width="200" height="22"/>
+                    <size key="maxSize" width="2000" height="22"/>
+                    <searchField key="view" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" id="109">
+                        <rect key="frame" x="0.0" y="14" width="728" height="22"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" bezelStyle="round" id="110">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -44,16 +44,18 @@
                         <action selector="searchInput:" target="-2" id="141"/>
                     </connections>
                 </toolbarItem>
-                <toolbarItem implicitItemIdentifier="F1FC3D19-5185-414A-A67F-C1706F5D4530" explicitItemIdentifier="SearchTypeSegmentButton" label="Search type" paletteLabel="Search type" sizingBehavior="auto" id="124">
+                <toolbarItem implicitItemIdentifier="F1FC3D19-5185-414A-A67F-C1706F5D4530" explicitItemIdentifier="SearchTypeSegmentButton" label="Search type" paletteLabel="Search type" id="124">
                     <nil key="toolTip"/>
+                    <size key="minSize" width="40" height="23"/>
+                    <size key="maxSize" width="154" height="25"/>
                     <segmentedControl key="view" verticalHuggingPriority="750" id="108">
-                        <rect key="frame" x="0.0" y="14" width="75" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="14" width="74" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <segmentedCell key="cell" state="on" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="111">
                             <font key="font" metaFont="system"/>
                             <segments>
                                 <segment image="NSListViewTemplate" width="32" selected="YES"/>
-                                <segment image="NSRevealFreestandingTemplate" width="32" tag="1"/>
+                                <segment image="NSRevealFreestandingTemplate" width="31" tag="1"/>
                             </segments>
                         </segmentedCell>
                         <connections>
@@ -154,14 +156,14 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="62"/>
             </connections>
-            <point key="canvasLocation" x="-33" y="94"/>
+            <point key="canvasLocation" x="333" y="129"/>
         </toolbar>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="14" height="13"/>
-        <image name="NSListViewTemplate" width="16" height="12"/>
-        <image name="NSRefreshTemplate" width="14" height="16"/>
-        <image name="NSRevealFreestandingTemplate" width="15" height="15"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
+        <image name="NSListViewTemplate" width="21" height="15"/>
+        <image name="NSRefreshTemplate" width="18" height="21"/>
+        <image name="NSRevealFreestandingTemplate" width="20" height="20"/>
         <image name="ViewControlLeftYosemite" width="18" height="14"/>
         <image name="ViewControlRightYosemite" width="18" height="14"/>
     </resources>

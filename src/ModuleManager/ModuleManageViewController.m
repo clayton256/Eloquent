@@ -322,7 +322,6 @@
 - (IBAction)deleteInstallSource:(id)sender {
     // add values from current elected install source
     if([self.selectedInstallSources count] > 0) {
-        
         // get selected install source
         InstallSourceListObject *selected = self.selectedInstallSources[0];
         SwordInstallSource *is = [selected installSource];
@@ -334,7 +333,6 @@
         [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
         NSInteger stat = [alert runModal];
         if(stat == NSAlertFirstButtonReturn) {
-            
             SwordInstallSourceManager *sis = [SwordInstallSourceManager defaultManager];
             [sis removeInstallSource:is reload:YES];
             
@@ -354,7 +352,6 @@
 - (IBAction)editInstallSource:(id)sender {
     // add values from current elected install source
     if([self.selectedInstallSources count] > 0) {
-        
         // get selected install source
         InstallSourceListObject *selected = self.selectedInstallSources[0];
         SwordInstallSource *is = [selected installSource];
@@ -459,7 +456,6 @@
             // on editing mode, there must be a selected is
             // add values from current elected install source
             if([self.selectedInstallSources count] > 0) {
-                
                 // get selected install source
                 InstallSourceListObject *selected = self.selectedInstallSources[0];
                 is = [selected installSource];
@@ -502,9 +498,11 @@
 }
 
 - (IBAction)editISTestButton:(id)sender {
-    
     NSString *dir = [editISDirCell stringValue];
     NSString *host = [editISSourceCell stringValue];
+    
+    [editISTestProgressIndicator setUsesThreadedAnimation:YES];
+    [editISTestProgressIndicator startAnimation:nil];
     
     if([host isEqualToString:@"localhost"]) {
         // check for existence of directory
@@ -523,6 +521,7 @@
                                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     BOOL success = (data != nil && error == nil);
+                    [self->editISTestProgressIndicator stopAnimation:nil];
                     [self showTestResultWithSuccess:success];
                 });
             }];
@@ -603,7 +602,6 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // Cancel indicator
         BOOL isCanceled = NO;
-        int error = 0;
 
         // get controllers
         SwordInstallSourceManager *sis = [SwordInstallSourceManager defaultManager];
@@ -628,7 +626,7 @@
                 // uninstall
                 int stat = [sis uninstallModule:[modObj module] fromManager:sm];
                 if(stat != 0) {
-                    error++;
+                    CocoLog(LEVEL_WARN, @"Unable to uninstall module: %@", [modObj moduleName]);
                 } else {
                     // shall we remove the index as well?
                     if([UserDefaults boolForKey:DefaultsRemoveIndexOnModuleRemoval]) {
@@ -639,6 +637,7 @@
         }
         [self.removeDict removeAllObjects];
 
+        [self performSelOnMain:pSheet selector:@selector(reset) object:nil];
         if(!isCanceled) {
             // then install
             [self performSelOnMain:pSheet selector:@selector(setActionMessage:) object:NSLocalizedString(@"Action_InstallingModules", @"")];
@@ -652,7 +651,7 @@
                     [self performSelOnMain:pSheet selector:@selector(incrementProgressBy:) object:@1.0];
                     
                     // if this is the last item to install we can make the indicator to indeterminate
-                    if([pSheet progressValue] == [pSheet maxProgressValue]) {
+                    if([pSheet progressValue] >= [pSheet maxProgressValue]) {
                         [self performSelOnMain:pSheet selector:@selector(setIsIndeterminateProgress:) object:@YES];
                     }
                     
@@ -665,7 +664,7 @@
                     if([is isLocalSource] || [sis userDisclaimerConfirmed]) {
                         int stat = [sis installModule:[modObj module] fromSource:is withManager:sm];
                         if(stat != 0) {
-                            error++;
+                            CocoLog(LEVEL_WARN, @"Unable to install module: %@", [modObj moduleName]);
                         }
                     }
                 }
