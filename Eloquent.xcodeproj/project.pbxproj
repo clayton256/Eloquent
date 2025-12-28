@@ -2332,12 +2332,13 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Resources/ObjCSword.framework/PrivateHeaders";
 				IBC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = "Eloquent-AppStore-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Eloquent;
 				INSTALL_PATH = /Applications;
 				LD_OPENMP_FLAGS = "-fopenmp";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 2.6.7;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 2.6.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = (
 					"-DDEBUG",
@@ -2384,11 +2385,12 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Resources/ObjCSword.framework/PrivateHeaders";
 				IBC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = "Eloquent-AppStore-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Eloquent;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 2.6.7;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MARKETING_VERSION = 2.6.9;
 				OTHER_CFLAGS = (
 					"-DRELEASE",
 					"-DAPPSTORE",
@@ -2586,7 +2588,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 2.6.8;
+				MARKETING_VERSION = 2.6.9;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DDEBUG";
 				OTHER_LDFLAGS = (
@@ -2641,7 +2643,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 2.6.8;
+				MARKETING_VERSION = 2.6.9;
 				OTHER_CFLAGS = "-DRELEASE";
 				OTHER_LDFLAGS = (
 					"-lcurl",
