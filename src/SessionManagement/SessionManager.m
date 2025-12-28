@@ -6,6 +6,7 @@
 
 
 #import <FooLogger/CocoLogger.h>
+#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 #import "SessionManager.h"
 #import "ProtocolHelper.h"
 #import "HostableViewController.h"
@@ -14,6 +15,7 @@
 #import "globals.h"
 #import "MBPreferenceController.h"
 #import "FolderUtil.h"
+#import "SearchTextObject.h"
 
 @interface SessionManager ()
 
@@ -31,23 +33,21 @@
     return instance;
 }
 
-- (id)init {
+- (id)initWithUrl:(NSURL *)anUrl {
     self = [super init];
-    if (self) {
-        self.session = [[Session alloc] init];
-
-        // load session path from defaults
-        if([UserDefaults objectForKey:DefaultsSessionPath] == nil) {
-            self.session.url = [FolderUtil urlForDefaultSession];
-        } else {
-            self.session.url = [NSURL URLWithString:[UserDefaults objectForKey:DefaultsSessionPath]];
-        }
+    if(self) {
+        self.session = [[Session alloc] initWithURL:anUrl];
     }
-
     return self;
 }
 
+- (id)init {
+    // load session path from defaults
+    NSURL *url = [UserDefaults objectForKey:DefaultsSessionPath] == nil ?
+        [FolderUtil urlForDefaultSession] : [NSURL URLWithString:[UserDefaults objectForKey:DefaultsSessionPath]];
 
+    return [self initWithUrl:url];
+}
 
 - (bool)hasWindows {
     return self.session.windows != nil && self.session.windows.count > 0;
@@ -73,13 +73,16 @@
 */
 - (void)saveSession {
     // encode all windows
-    NSMutableData *data = [NSMutableData data];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initRequiringSecureCoding:NO];
     [archiver setOutputFormat:NSPropertyListXMLFormat_v1_0];
     [archiver encodeObject:self.session.windows forKey:@"WindowsEncoded"];
     [archiver finishEncoding];
+    NSData *data = [archiver encodedData];
+
     // write data object
-    [data writeToURL:self.session.url atomically:NO];
+    if (![data writeToURL:self.session.url atomically:NO]) {
+        CocoLog(LEVEL_ERR, @"Unable to write session to: %@", [self.session.url absoluteString]);
+    }
 }
 
 /**
@@ -90,8 +93,8 @@
     NSSavePanel *sp = [NSSavePanel savePanel];
     [sp setTitle:NSLocalizedString(@"SaveMSSession", @"")];
     [sp setCanCreateDirectories:YES];
-    [sp setAllowedFileTypes:[NSArray arrayWithObject:@"mssess"]];
-    if([sp runModal] == NSFileHandlingPanelOKButton) {
+    [sp setAllowedContentTypes:@[[UTType typeWithFilenameExtension:@"mssess"]]];
+    if([sp runModal] == NSModalResponseOK) {
         self.session.url = [sp URL];
         [self saveSession];
         // this session we have loaded
@@ -136,12 +139,12 @@
     // open load panel
     NSOpenPanel *op = [NSOpenPanel openPanel];
     [op setCanCreateDirectories:NO];
-    [op setAllowedFileTypes:[NSArray arrayWithObject:@"mssess"]];
+    [op setAllowedContentTypes:@[[UTType typeWithFilenameExtension:@"mssess"]]];
     [op setTitle:NSLocalizedString(@"LoadMSSession", @"")];
     [op setAllowsMultipleSelection:NO];
     [op setCanChooseDirectories:NO];
     [op setAllowsOtherFileTypes:NO];
-    if([op runModal] == NSFileHandlingPanelOKButton) {
+    if([op runModal] == NSModalResponseOK) {
         // close all existing windows
         for(NSWindowController *wc in self.session.windows) {
             [wc close];
@@ -171,19 +174,19 @@
         NSData *data = [NSData dataWithContentsOfURL:self.session.url];
         if (data == nil) @throw [NSException exceptionWithName:@"SessionLoadError" reason:@"Unable to load session!" userInfo:nil];
 
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        NSError *error = nil;
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingFromData:data error:&error];
+        [unarchiver setRequiresSecureCoding:NO];
         NSArray *windows = [unarchiver decodeObjectForKey:@"WindowsEncoded"];
-
+        
         self.session.windows = windows;
-
     } @catch (NSException *e) {
         CocoLog(LEVEL_ERR, @"Unable to load session: %@", [self.session.url absoluteString]);
         CocoLog(LEVEL_ERR, @"Error reason: %@", [e reason]);
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"SessionLoadError", @"")
-                                         defaultButton:NSLocalizedString(@"OK", @"")
-                                       alternateButton:nil
-                                           otherButton:nil
-                             informativeTextWithFormat:NSLocalizedString(@"SessionLoadErrorText", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"SessionLoadError", @"")];
+        [alert setInformativeText:NSLocalizedString(@"SessionLoadErrorText", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"OK", @"")];
         [alert runModal];
     }
 }
@@ -193,11 +196,11 @@
     // ask the user if we wants to save the open session first
     if([self.session.windows count] > 0) {
         // show Alert
-        NSAlert *alert = [NSAlert alertWithMessageText:NSLocalizedString(@"SessionStillOpen", @"")
-                                         defaultButton:NSLocalizedString(@"Yes", @"")
-                                       alternateButton:NSLocalizedString(@"No", @"")
-                                           otherButton:nil
-                             informativeTextWithFormat:NSLocalizedString(@"WantToSaveTheSessionBeforeClosing", @"")];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:NSLocalizedString(@"SessionStillOpen", @"")];
+        [alert setInformativeText:NSLocalizedString(@"WantToSaveTheSessionBeforeClosing", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"Yes", @"")];
+        [alert addButtonWithTitle:NSLocalizedString(@"No", @"")];
         if([alert runModal] == NSAlertFirstButtonReturn) {
             // save session
             [self saveSession];

@@ -15,6 +15,8 @@
 
 + (SessionManager *)defaultManager;
 
+- (id)initWithUrl:(NSURL *)anUrl;
+
 - (bool)hasWindows;
 - (bool)hasUnsavedContent;
 

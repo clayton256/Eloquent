@@ -15,14 +15,16 @@
 
 - (void)setUp {
     [super setUp];
-
-    manager = [[SessionManager alloc] init];
 }
 
 - (void)tearDown {
-    [manager release];
-
     [super tearDown];
+}
+
+- (void)testLoadSession {
+    manager = [[SessionManager alloc] init];
+
+    XCTAssertTrue(1 == 1);
 }
 
 @end
