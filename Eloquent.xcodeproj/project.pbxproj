@@ -296,8 +296,12 @@
 		A9623E5E0F34E412000E1F53 /* MBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9623E5D0F34E412000E1F53 /* MBTextView.m */; };
 		A965162C0E06D0BD0058AA91 /* SingleViewHostController.m in Sources */ = {isa = PBXBuildFile; fileRef = A965162B0E06D0BD0058AA91 /* SingleViewHostController.m */; };
 		A965CEB3112C32C000F4E602 /* CacheObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A965CEB2112C32C000F4E602 /* CacheObject.m */; };
-		A971F2B52F015CA60018A7C1 /* FolderUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */; };
-		A971F2B62F015CA60018A7C1 /* SessionManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C01FCF5008A9545400542484 /* SessionManagerTest.m */; };
+		A971F2D12F01630A0018A7C1 /* ImageModuleTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F2CC2F01630A0018A7C1 /* ImageModuleTest.m */; };
+		A971F2D22F01630A0018A7C1 /* BookmarkManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F2C82F01630A0018A7C1 /* BookmarkManagerTest.m */; };
+		A971F2D32F01630A0018A7C1 /* ObjectAssotiationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F2CE2F01630A0018A7C1 /* ObjectAssotiationsTest.m */; };
+		A971F2D42F01630A0018A7C1 /* EloquentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F2C92F01630A0018A7C1 /* EloquentTests.m */; };
+		A971F2D52F01630A0018A7C1 /* FolderUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F2CA2F01630A0018A7C1 /* FolderUtilTests.m */; };
+		A971F2D62F01630A0018A7C1 /* SessionManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A971F2D02F01630A0018A7C1 /* SessionManagerTest.m */; };
 		A974469410CFC08500438C5F /* NSTextView+LookupAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = A974469310CFC08500438C5F /* NSTextView+LookupAdditions.m */; };
 		A97561EE12A2779000A7661B /* SwordUrlProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = A97561ED12A2779000A7661B /* SwordUrlProtocol.m */; };
 		A97CE18D0EEE71CA00984B21 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97CE18C0EEE71CA00984B21 /* Sparkle.framework */; };
@@ -572,7 +576,6 @@
 		A92819970E100F240007B767 /* Highlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Highlighter.m; sourceTree = "<group>"; };
 		A928B2E82EC71C2A000CCA83 /* FolderUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FolderUtil.h; path = src/Utils/FolderUtil.h; sourceTree = "<group>"; };
 		A928B2E92EC71C2A000CCA83 /* FolderUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FolderUtil.m; path = src/Utils/FolderUtil.m; sourceTree = "<group>"; };
-		A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FolderUtilTests.m; path = test/FolderUtilTests.m; sourceTree = "<group>"; };
 		A928B2F22EC71F4D000CCA83 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/MacOSX.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		A9333ADF0F6699110001BD38 /* ProgressOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressOverlayViewController.h; path = src/ProgressOverlayView/ProgressOverlayViewController.h; sourceTree = "<group>"; };
 		A9333AE00F6699110001BD38 /* ProgressOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressOverlayViewController.m; path = src/ProgressOverlayView/ProgressOverlayViewController.m; sourceTree = "<group>"; };
@@ -644,6 +647,16 @@
 		A971F2882F0158640018A7C1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		A971F2902F015A100018A7C1 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
 		A971F2AC2F015C720018A7C1 /* EloquentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EloquentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A971F2C72F01630A0018A7C1 /* BookmarkManagerTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookmarkManagerTest.h; sourceTree = "<group>"; };
+		A971F2C82F01630A0018A7C1 /* BookmarkManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookmarkManagerTest.m; sourceTree = "<group>"; };
+		A971F2C92F01630A0018A7C1 /* EloquentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EloquentTests.m; sourceTree = "<group>"; };
+		A971F2CA2F01630A0018A7C1 /* FolderUtilTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FolderUtilTests.m; sourceTree = "<group>"; };
+		A971F2CB2F01630A0018A7C1 /* ImageModuleTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageModuleTest.h; sourceTree = "<group>"; };
+		A971F2CC2F01630A0018A7C1 /* ImageModuleTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageModuleTest.m; sourceTree = "<group>"; };
+		A971F2CD2F01630A0018A7C1 /* ObjectAssotiationsTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectAssotiationsTest.h; sourceTree = "<group>"; };
+		A971F2CE2F01630A0018A7C1 /* ObjectAssotiationsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectAssotiationsTest.m; sourceTree = "<group>"; };
+		A971F2CF2F01630A0018A7C1 /* SessionManagerTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionManagerTest.h; sourceTree = "<group>"; };
+		A971F2D02F01630A0018A7C1 /* SessionManagerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionManagerTest.m; sourceTree = "<group>"; };
 		A974469210CFC08500438C5F /* NSTextView+LookupAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTextView+LookupAdditions.h"; path = "src/UserInterface/NSTextView+LookupAdditions.h"; sourceTree = "<group>"; };
 		A974469310CFC08500438C5F /* NSTextView+LookupAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTextView+LookupAdditions.m"; path = "src/UserInterface/NSTextView+LookupAdditions.m"; sourceTree = "<group>"; };
 		A97561EC12A2779000A7661B /* SwordUrlProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwordUrlProtocol.h; path = src/SwordUrlProtocol.h; sourceTree = "<group>"; };
@@ -665,8 +678,6 @@
 		A98A951B112E8DA000EC8B76 /* WindowHostController+Fullscreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "WindowHostController+Fullscreen.m"; path = "src/UserInterface/WindowHostController+Fullscreen.m"; sourceTree = "<group>"; };
 		A98A951D112E8E4B00EC8B76 /* ObjectAssociations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectAssociations.h; path = src/ObjectAssotiations/ObjectAssociations.h; sourceTree = "<group>"; };
 		A98A951E112E8E4B00EC8B76 /* ObjectAssociations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectAssociations.m; path = src/ObjectAssotiations/ObjectAssociations.m; sourceTree = "<group>"; };
-		A98A9528112E989C00EC8B76 /* ObjectAssotiationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectAssotiationsTest.h; path = test/ObjectAssotiationsTest.h; sourceTree = "<group>"; };
-		A98A9529112E989C00EC8B76 /* ObjectAssotiationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectAssotiationsTest.m; path = test/ObjectAssotiationsTest.m; sourceTree = "<group>"; };
 		A98A9681112ED53C00EC8B76 /* BibleViewController+RightSidebar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BibleViewController+RightSidebar.h"; path = "src/UserInterface/BibleViewController+RightSidebar.h"; sourceTree = "<group>"; };
 		A98A9682112ED53C00EC8B76 /* BibleViewController+RightSidebar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "BibleViewController+RightSidebar.m"; path = "src/UserInterface/BibleViewController+RightSidebar.m"; sourceTree = "<group>"; };
 		A98A9684112ED5D400EC8B76 /* BibleViewController+TextDisplayGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "BibleViewController+TextDisplayGeneration.h"; path = "src/UserInterface/BibleViewController+TextDisplayGeneration.h"; sourceTree = "<group>"; };
@@ -754,8 +765,6 @@
 		A9D84D740EFB00F3000457EC /* BookmarkDragItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkDragItem.h; path = src/UserInterface/BookmarkDragItem.h; sourceTree = "<group>"; };
 		A9D84D750EFB00F3000457EC /* BookmarkDragItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkDragItem.m; path = src/UserInterface/BookmarkDragItem.m; sourceTree = "<group>"; };
 		A9D9F51B0EAF151E0035222E /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
-		A9D9F5270EAF156D0035222E /* BookmarkManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookmarkManagerTest.h; path = test/BookmarkManagerTest.h; sourceTree = "<group>"; };
-		A9D9F5280EAF156D0035222E /* BookmarkManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookmarkManagerTest.m; path = test/BookmarkManagerTest.m; sourceTree = "<group>"; };
 		A9E820FF0E0B95C60020A64E /* ScrollSynchronizableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScrollSynchronizableView.h; path = src/UserInterface/ScrollSynchronizableView.h; sourceTree = "<group>"; };
 		A9E821000E0B95C70020A64E /* ScrollSynchronizableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScrollSynchronizableView.m; path = src/UserInterface/ScrollSynchronizableView.m; sourceTree = "<group>"; };
 		A9E8BD2A0EADAE2800E58D1E /* Bookmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bookmark.h; path = src/Bookmarks/Bookmark.h; sourceTree = "<group>"; };
@@ -783,8 +792,6 @@
 		C01FCF5008A954540054247E /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Session.m; path = src/SessionManagement/Session.m; sourceTree = "<group>"; };
 		C01FCF5008A9545400542480 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionManager.h; path = src/SessionManagement/SessionManager.h; sourceTree = "<group>"; };
 		C01FCF5008A9545400542481 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionManager.m; path = src/SessionManagement/SessionManager.m; sourceTree = "<group>"; };
-		C01FCF5008A9545400542483 /* SessionManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionManagerTest.h; path = test/SessionManagerTest.h; sourceTree = "<group>"; };
-		C01FCF5008A9545400542484 /* SessionManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionManagerTest.m; path = test/SessionManagerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -1357,13 +1364,16 @@
 		A9D9F5260EAF15410035222E /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A928B2EF2EC71DF1000CCA83 /* FolderUtilTests.m */,
-				C01FCF5008A9545400542483 /* SessionManagerTest.h */,
-				C01FCF5008A9545400542484 /* SessionManagerTest.m */,
-				A9D9F5270EAF156D0035222E /* BookmarkManagerTest.h */,
-				A9D9F5280EAF156D0035222E /* BookmarkManagerTest.m */,
-				A98A9528112E989C00EC8B76 /* ObjectAssotiationsTest.h */,
-				A98A9529112E989C00EC8B76 /* ObjectAssotiationsTest.m */,
+				A971F2C72F01630A0018A7C1 /* BookmarkManagerTest.h */,
+				A971F2C82F01630A0018A7C1 /* BookmarkManagerTest.m */,
+				A971F2C92F01630A0018A7C1 /* EloquentTests.m */,
+				A971F2CA2F01630A0018A7C1 /* FolderUtilTests.m */,
+				A971F2CB2F01630A0018A7C1 /* ImageModuleTest.h */,
+				A971F2CC2F01630A0018A7C1 /* ImageModuleTest.m */,
+				A971F2CD2F01630A0018A7C1 /* ObjectAssotiationsTest.h */,
+				A971F2CE2F01630A0018A7C1 /* ObjectAssotiationsTest.m */,
+				A971F2CF2F01630A0018A7C1 /* SessionManagerTest.h */,
+				A971F2D02F01630A0018A7C1 /* SessionManagerTest.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -1981,8 +1991,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A971F2B52F015CA60018A7C1 /* FolderUtilTests.m in Sources */,
-				A971F2B62F015CA60018A7C1 /* SessionManagerTest.m in Sources */,
+				A971F2D12F01630A0018A7C1 /* ImageModuleTest.m in Sources */,
+				A971F2D22F01630A0018A7C1 /* BookmarkManagerTest.m in Sources */,
+				A971F2D32F01630A0018A7C1 /* ObjectAssotiationsTest.m in Sources */,
+				A971F2D42F01630A0018A7C1 /* EloquentTests.m in Sources */,
+				A971F2D52F01630A0018A7C1 /* FolderUtilTests.m in Sources */,
+				A971F2D62F01630A0018A7C1 /* SessionManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
