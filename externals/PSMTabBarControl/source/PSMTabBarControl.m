@@ -1791,6 +1791,8 @@ const NSInteger kPSMStartResizeAnimation = 0;
     if ([[self delegate] respondsToSelector:@selector(tabViewDidChangeNumberOfTabViewItems:)]) {
         [[self delegate] tabViewDidChangeNumberOfTabViewItems:aTabView];
     }
+
+    [self update];
 }
 
 - (NSDragOperation)tabView:(NSTabView *)tabView draggingEnteredTabBarForSender:(id<NSDraggingInfo>)tagViewItem {
