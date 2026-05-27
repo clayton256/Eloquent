@@ -2,61 +2,79 @@ import AppIntents
 import Foundation
 import AppKit
 
-// MARK: - App Shortcuts Provider
-struct EloquentShortcuts: AppShortcutsProvider {
-    static var shortcutTileColor: ShortcutTileColor = .purple
 
+// MARK: - App Shortcuts Provider
+struct EloquentSearchShortcuts: AppShortcutsProvider {
+    static var shortcutTileColor: ShortcutTileColor = .yellow
+    @AppShortcutsBuilder
     static var appShortcuts: [AppShortcut] {
-        [
             AppShortcut(
                 intent: SearchPassageIntent(),
                 phrases: [
-                    "Search with \\(.applicationName)",
-                    "Search \\(.applicationName) for \\(.variable(\\.$query))",
-                    "Find \\(.variable(\\.$query)) in \\(.applicationName)"
+                    "\(.applicationName) return passage"
                 ],
                 shortTitle: "Search",
                 systemImageName: "text.magnifyingglass"
-            ),
+            )
+    }
+}
+
+// MARK: - App Shortcuts Provider
+/*struct EloquentOpenShortcuts: AppShortcutsProvider {
+    static var shortcutTileColor: ShortcutTileColor = .yellow
+    @AppShortcutsBuilder
+    static var appShortcuts: [AppShortcut] {
             AppShortcut(
                 intent: OpenPassageIntent(),
                 phrases: [
-                    "Open passage in \\(.applicationName)",
-                    "Open \\(.variable(\\.$reference)) in \\(.applicationName)"
+                    "Open passage in \(.applicationName)"
                 ],
                 shortTitle: "Open Passage",
                 systemImageName: "book"
             )
-        ]
     }
-}
-
+}*/
 // MARK: - Search Intent
 struct SearchPassageIntent: AppIntent {
-    static var title: LocalizedStringResource = "Search Passage"
+    
+    static var title: LocalizedStringResource = "Search for Passage"
     static var description = IntentDescription(
-        "Searches scripture text for a query in an optional version, returning a text result."
+        "Searches Eloquent for a scripture referenece in an optional translation, returning a text result."
     )
 
-    @Parameter(title: "Query", requestValueDialog: "What would you like to search for?")
-    var query: String
+    @Parameter(title: "Reference", requestValueDialog: "What passage would you like to search for?")
+    var reference: String
 
-    @Parameter(title: "Version", requestValueDialog: "Which version would you like to use?")
-    var version: String?
+    @Parameter(title: "Translation", requestValueDialog: "Which translation would you like to use?")
+    var translation: String?
 
     static var parameterSummary: some ParameterSummary {
-        Summary("Search \(\.$query) in \(\.$version)")
+        Summary("Search \(\.$reference)") {
+            \.$translation
+        }
     }
 
     static var openAppWhenRun: Bool = false
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        let resolvedVersion = version?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let usedVersion = (resolvedVersion?.isEmpty == false) ? resolvedVersion! : nil
+        let resolvedVersion = translation?.trimmingCharacters(
+            in: .whitespacesAndNewlines
+        )
+        let usedVersion: String? = (resolvedVersion?.isEmpty == false) ? resolvedVersion! : nil
 
         // Bridge to Objective-C search manager (synchronous stub for now).
-        let text = SearchManager.shared().searchFor(query, inVersion: usedVersion, error: nil) ?? ""
-        return .result(value: text)
+        do {
+            let text = try SearchManager.shared().search(
+                for: reference,
+                inVersion: usedVersion
+            )
+            return .result(value: text)
+        } catch {
+            // Return a friendly error string instead of throwing to the caller.
+            let versionSuffix = usedVersion.map { " in \($0)" } ?? ""
+            let message = "Sorry, I couldn’t complete the search for ‘\(reference)’\(versionSuffix): \(error.localizedDescription)"
+            return .result(value: message)
+        }
     }
 }
 
@@ -69,18 +87,20 @@ struct OpenPassageIntent: AppIntent {
     var reference: String
 
     @Parameter(title: "Version")
-    var version: String?
+    var translation: String?
 
     static var openAppWhenRun: Bool = true
 
     static var parameterSummary: some ParameterSummary {
-        Summary("Open \(\.$reference) in \(\.$version)")
+        Summary("Open \(\.$reference)") {
+            \.$translation
+        }
     }
 
     func perform() async throws -> some IntentResult & ReturnsValue<String> {
-        // Bridge to Objective-C to open/navigate the UI. For now, call a stub.
-        SearchManager.shared().openPassage(reference, version: version)
-        let suffix = (version?.isEmpty == false) ? " in \(version!)" : ""
+        SearchManager.shared().openPassage(reference, version: translation)
+        let suffix = (translation?.isEmpty == false) ? " in \(translation!)" : ""
         return .result(value: "Opened \(reference)\(suffix)")
     }
 }
+
