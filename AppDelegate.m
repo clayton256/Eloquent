@@ -1,17 +1,23 @@
+//
+//  AppDelegate.m
+//  Eloquent
+//
+//  Created by Mark Clayton on 5/21/26.
+//  Copyright © 2026 Crosswire. All rights reserved.
+//
+
 // AppDelegate.m
+#import <Cocoa/Cocoa.h>
 #import "AppDelegate.h"
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-
-    if ([[url.scheme lowercaseString] isEqualToString:[@"org.crosswire.Eloquent" lowercaseString]]) {
-        [self routeDeepLinkURL:url];
-        return YES;
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls {
+    for (NSURL *url in urls) {
+        if ([[url.scheme lowercaseString] isEqualToString:@"eloquent"]) {
+            [self routeDeepLinkURL:url];
+        }
     }
-    return NO;
 }
 
 - (void)routeDeepLinkURL:(NSURL *)url {
@@ -62,3 +68,4 @@
 }
 
 @end
+

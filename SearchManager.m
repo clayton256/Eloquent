@@ -5,6 +5,17 @@
 //
 
 #import "SearchManager.h"
+#import "ObjCSword/SwordManager.h"
+#import "ObjCSword/SwordDictionary.h"
+#import "ObjCSword/SwordKey.h"
+#import "ObjCSword/SwordModuleTextEntry.h"
+#import "ObjCSword/SwordVerseKey.h"
+#import "ObjCSword/SwordBible.h"
+#import "BibleViewController.h"
+
+@interface SearchManager ()
+@property (nonatomic, strong, nullable) SwordModule *module;
+@end
 
 @implementation SearchManager
 
@@ -17,10 +28,42 @@
     return mgr;
 }
 
-- (nullable NSString *)searchFor:(NSString *)query inVersion:(NSString * _Nullable)version error:(NSError * _Nullable * _Nullable)error {
+- (nullable SwordModule *)moduleForVersion:(NSString *)version {
+    SwordManager *sm = [SwordManager defaultManager];
+    SwordModule *mod = [sm moduleWithName:version];
+    return mod;
+}
+
+- (nullable NSString *)searchFor:(NSString *)reference inVersion:(NSString * _Nullable)translation error:(NSError * _Nullable * _Nullable)error {
     // TODO: Replace with your real search implementation.
-    NSString *usedVersion = (version.length > 0) ? version : @"default";
-    return [NSString stringWithFormat:@"Search '%@' in %@ completed.", query, usedVersion];
+    NSString *usedVersion = (translation.length > 0) ? translation : @"WEB";
+    NSMutableString *result = [NSMutableString string];
+
+    // Resolve module from version
+    self.module = [self moduleForVersion:usedVersion];
+    if (!self.module) {
+        if (error) {
+            *error = [NSError errorWithDomain:@"SearchManager" code:1 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"Module '%@' not found.", usedVersion]}];
+        }
+        return nil;
+    }
+
+    // Render text entries for the provided reference
+    NSArray *textEntries = [(SwordBible *)self.module renderedTextEntriesForReference:reference context:0];
+
+    // Concatenate the text from each entry into a single result string
+    for (id entry in textEntries) {
+        // Entries are expected to be SwordModuleTextEntry or compatible with a 'text' selector
+        if ([entry respondsToSelector:@selector(text)]) {
+            NSString *piece = [entry performSelector:@selector(text)];
+            if (piece.length > 0) {
+                if (result.length > 0) { [result appendString:@"\n"]; }
+                [result appendString:piece];
+            }
+        }
+    }
+    CocoLog(LEVEL_INFO, @"Returning %@", result);
+    return result.length > 0 ? result : [NSString stringWithFormat:@"\n", nil];
 }
 
 - (void)openPassage:(NSString *)reference version:(NSString * _Nullable)version {
@@ -29,3 +72,4 @@
 }
 
 @end
+
