@@ -36,7 +36,7 @@
 
 - (nullable NSString *)searchFor:(NSString *)reference inVersion:(NSString * _Nullable)translation error:(NSError * _Nullable * _Nullable)error {
     // TODO: Replace with your real search implementation.
-    NSString *usedVersion = (translation.length > 0) ? translation : @"WEB";
+    NSString *usedVersion = (translation.length > 0) ? translation : @"KJV";
     NSMutableString *result = [NSMutableString string];
 
     // Resolve module from version
