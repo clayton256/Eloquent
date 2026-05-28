@@ -33,8 +33,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		4D2506C72FBF998200A4593F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2506C62FBF998200A4593F /* AppDelegate.m */; };
-		4D2506C82FBF998200A4593F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2506C62FBF998200A4593F /* AppDelegate.m */; };
+		4D21715D2FC7C5A7007451DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D21715C2FC7C5A7007451DE /* AppDelegate.m */; };
+		4D21715E2FC7C5A7007451DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D21715C2FC7C5A7007451DE /* AppDelegate.m */; };
 		4D2506CC2FBF9E4A00A4593F /* EloquentIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2506CB2FBF9E4A00A4593F /* EloquentIntents.swift */; };
 		4D2506CD2FBF9E4A00A4593F /* EloquentIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2506CB2FBF9E4A00A4593F /* EloquentIntents.swift */; };
 		4D2506CF2FBF9E5D00A4593F /* SearchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D2506CE2FBF9E5D00A4593F /* SearchManager.m */; };
@@ -453,8 +453,8 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Eloquent_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Eloquent_Prefix.pch; sourceTree = "<group>"; };
-		4D2506C62FBF998200A4593F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4D2506C92FBF999500A4593F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4D21715B2FC7C5A7007451DE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4D21715C2FC7C5A7007451DE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4D2506CA2FBF9E4400A4593F /* SearchManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchManager.h; sourceTree = "<group>"; };
 		4D2506CB2FBF9E4A00A4593F /* EloquentIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EloquentIntents.swift; sourceTree = "<group>"; };
 		4D2506CE2FBF9E5D00A4593F /* SearchManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchManager.m; sourceTree = "<group>"; };
@@ -854,8 +854,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				4D2506C62FBF998200A4593F /* AppDelegate.m */,
-				4D2506C92FBF999500A4593F /* AppDelegate.h */,
+				4D21715B2FC7C5A7007451DE /* AppDelegate.h */,
+				4D21715C2FC7C5A7007451DE /* AppDelegate.m */,
 				A91C93DB0DF9B0E9006B7361 /* AppController.h */,
 				A91C93DC0DF9B0E9006B7361 /* AppController.m */,
 				A97561EC12A2779000A7661B /* SwordUrlProtocol.h */,
@@ -1901,13 +1901,13 @@
 				A9A9206F1205A3E8008D7A64 /* DailyDevotionPanelController.m in Sources */,
 				A9591226120ECCC100C55528 /* SwordModCategory.m in Sources */,
 				A9802A7612182E4A00F4EF70 /* NSArray+TextEntryDuplicateRemove.m in Sources */,
-				4D2506C82FBF998200A4593F /* AppDelegate.m in Sources */,
 				A9BDD36624CDA58600506AB2 /* PSMTabBarCell.m in Sources */,
 				A97561EE12A2779000A7661B /* SwordUrlProtocol.m in Sources */,
 				A955E198142612B000357B6F /* WebViewController.m in Sources */,
 				C01FCF5008A954540054247F /* Session.m in Sources */,
 				C01FCF5008A9545400542482 /* SessionManager.m in Sources */,
 				8C92C9F54EFB58ACC035068E /* EloquentFilterProvider.mm in Sources */,
+				4D21715E2FC7C5A7007451DE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1983,6 +1983,7 @@
 				A941DD4C1C6D1A9E00B7BAF7 /* NSMutableDictionary+ModuleDisplaySettings.m in Sources */,
 				A941DD4D1C6D1A9E00B7BAF7 /* NSDictionary+ModuleDisplaySettings.m in Sources */,
 				A941DD4E1C6D1A9E00B7BAF7 /* CacheObject.m in Sources */,
+				4D21715D2FC7C5A7007451DE /* AppDelegate.m in Sources */,
 				A941DD4F1C6D1A9E00B7BAF7 /* NSAttributedString+Additions.m in Sources */,
 				A941DD501C6D1A9E00B7BAF7 /* NSDictionary+Additions.m in Sources */,
 				A941DD511C6D1A9E00B7BAF7 /* NSUserDefaults+Additions.m in Sources */,
@@ -1996,7 +1997,6 @@
 				A941DD581C6D1A9E00B7BAF7 /* ContentDisplayingViewControllerFactory.m in Sources */,
 				A941DD591C6D1A9E00B7BAF7 /* SearchTextFieldOptions.m in Sources */,
 				A941DD5A1C6D1A9E00B7BAF7 /* BookmarkCell.m in Sources */,
-				4D2506C72FBF998200A4593F /* AppDelegate.m in Sources */,
 				A941DD5B1C6D1A9E00B7BAF7 /* ToolbarController.m in Sources */,
 				A941DD5C1C6D1A9E00B7BAF7 /* HUDToolbarView.m in Sources */,
 				A941DD5D1C6D1A9E00B7BAF7 /* PrintAccessoryViewController.m in Sources */,
