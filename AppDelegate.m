@@ -30,7 +30,7 @@ static inline NSString *EloquentDefaultsBibleModuleKey(void) {
 }
 
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls {
-    CocoLog(LEVEL_DEBUG, @"GOT HERE: openURLs %@", nil);
+    CocoLog(LEVEL_DEBUG, @"openURLs %@", nil);
     for (NSURL *url in urls) {
         if ([[url.scheme lowercaseString] isEqualToString:@"eloquent"]) {
             [self routeDeepLinkURL:url];
@@ -39,7 +39,7 @@ static inline NSString *EloquentDefaultsBibleModuleKey(void) {
 }
 
 - (void)routeDeepLinkURL:(NSURL *)url {
-    CocoLog(LEVEL_DEBUG, @"GOT HERE: routeDeepLinkURL %@", url);
+    CocoLog(LEVEL_DEBUG, @"routeDeepLinkURL %@", url);
     NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:NO];
 
     NSMutableArray<NSString *> *cleanSegments = [NSMutableArray array];
@@ -72,7 +72,7 @@ static inline NSString *EloquentDefaultsBibleModuleKey(void) {
 #pragma mark - Navigation helpers
 
 - (void)openPassage:(NSString *)reference version:(NSString *)version {
-    CocoLog(LEVEL_DEBUG, @"GOT HERE: MopenPassage %@", reference);
+    CocoLog(LEVEL_DEBUG, @"openPassage %@", reference);
     // Resolve module to use: version param or default bible
     SwordModule *mod = nil;
     if (version.length > 0) {
@@ -109,7 +109,7 @@ static inline NSString *EloquentDefaultsBibleModuleKey(void) {
 }
 
 - (void)openModule:(NSString *)name {
-    CocoLog(LEVEL_DEBUG, @"GOT HERE: openModule %@", name);
+    CocoLog(LEVEL_DEBUG, @"openModule %@", name);
     // Resolve the module by name
     SwordModule *mod = nil;
     if (name.length > 0) {
@@ -136,7 +136,7 @@ static inline NSString *EloquentDefaultsBibleModuleKey(void) {
 }
 
 - (void)openSearch:(NSString *)query inVersion:(NSString *)version {
-    CocoLog(LEVEL_DEBUG, @"GOT HERE: MopenSearch %@", version);
+    CocoLog(LEVEL_DEBUG, @"openSearch %@", version);
     // Resolve module for search context (prefer version, fallback to default bible)
     SwordModule *mod = nil;
     if (version.length > 0) {
