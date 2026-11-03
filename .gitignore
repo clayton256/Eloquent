@@ -11,3 +11,5 @@ dsa_pub.pem
 sign_update.rb
 exportNibToStrings.sh
 buildnumber
+Eloquent.xcodeproj/project.xcworkspace/
+Eloquent.xcodeproj/xcuserdata/

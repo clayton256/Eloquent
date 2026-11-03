@@ -18,7 +18,7 @@
 {
     self = [super initWithFrame:frameRect pullsDown:YES];
 	if (self) {
-        [self setBezelStyle:NSRegularSquareBezelStyle];
+        [self setBezelStyle:NSBezelStyleFlexiblePush];
         [self setBordered:NO];
         [self setTitle:@""];
         [self setPreferredEdge:NSMaxXEdge];
@@ -44,7 +44,7 @@
 
     [image drawAtPoint:drawPoint
               fromRect:NSZeroRect
-             operation:NSCompositeSourceOver
+             operation:NSCompositingOperationSourceOver
               fraction:_animatingAlternateImage ? 0.7f : 1.0f];
 
 	if (_animatingAlternateImage) {
@@ -55,7 +55,7 @@
 
         [[self alternateImage] drawAtPoint:drawPoint
                                   fromRect:NSZeroRect
-                                 operation:NSCompositeSourceOver
+                                 operation:NSCompositingOperationSourceOver
                                   fraction:sin(_animationValue * M_PI)];
 	}
 }

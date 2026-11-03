@@ -148,7 +148,7 @@ const NSInteger kPSMStartResizeAnimation = 0;
             [_addTabButton setImagePosition:NSImageOnly];
             [_addTabButton setButtonType:NSMomentaryChangeButton];
             [_addTabButton setBordered:NO];
-            [_addTabButton setBezelStyle:NSShadowlessSquareBezelStyle];
+            [_addTabButton setBezelStyle:NSBezelStyleShadowlessSquare];
             if (_showAddTabButton){
                 [_addTabButton setHidden:NO];
             } else {
@@ -2111,16 +2111,16 @@ const NSInteger kPSMStartResizeAnimation = 0;
 
 - (NSString*)_modifierString {
     NSString *str = @"";
-    if (_modifier & NSCommandKeyMask) {
+    if (_modifier & NSEventModifierFlagCommand) {
         str = [NSString stringWithFormat:@"⌘%@", str];
     }
-    if (_modifier & NSShiftKeyMask) {
+    if (_modifier & NSEventModifierFlagShift) {
         str = [NSString stringWithFormat:@"⇧%@", str];
     }
-    if (_modifier & NSAlternateKeyMask) {
+    if (_modifier & NSEventModifierFlagOption) {
         str = [NSString stringWithFormat:@"⌥%@", str];
     }
-    if (_modifier & NSControlKeyMask) {
+    if (_modifier & NSEventModifierFlagControl) {
         str = [NSString stringWithFormat:@"^%@", str];
     }
     return str;

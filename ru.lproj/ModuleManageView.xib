@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="25408" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="25408"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -44,7 +45,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                             <clipView key="contentView" id="KLv-oF-ECO">
                                 <rect key="frame" x="0.0" y="0.0" width="269" height="604"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" autosaveName="eloquent.mi.islist" indentationPerLevel="15" autoresizesOutlineColumn="YES" outlineTableColumn="17" id="15">
                                         <rect key="frame" x="0.0" y="0.0" width="269" height="604"/>
@@ -75,11 +76,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </clipView>
-                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="349">
+                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="349">
                                 <rect key="frame" x="2" y="472" width="227" height="15"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
-                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="348">
+                            <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="348">
                                 <rect key="frame" x="229" y="2" width="15" height="470"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
@@ -99,7 +100,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="JDS-6u-kH4">
                                         <rect key="frame" x="0.0" y="0.0" width="786" height="574"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" autosaveName="eloquent.moduleinstaller.modulelist" headerView="352" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="42" id="40">
                                                 <rect key="frame" x="0.0" y="0.0" width="786" height="549"/>
@@ -218,11 +219,11 @@
                                             </outlineView>
                                         </subviews>
                                     </clipView>
-                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="351">
+                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="351">
                                         <rect key="frame" x="0.0" y="559" width="771" height="15"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
-                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="350">
+                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="350">
                                         <rect key="frame" x="771" y="17" width="15" height="542"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
@@ -359,7 +360,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="453" y="415" width="480" height="196"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1410"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="769"/>
             <value key="minSize" type="size" width="480" height="162"/>
             <view key="contentView" id="229">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="196"/>
@@ -471,12 +472,13 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="243"/>
             </connections>
+            <point key="canvasLocation" x="139" y="142"/>
         </window>
         <window title="Disclaimer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="353">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="33" width="599" height="477"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1410"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="769"/>
             <view key="contentView" id="354">
                 <rect key="frame" x="0.0" y="0.0" width="599" height="477"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -485,15 +487,15 @@
                         <rect key="frame" x="20" y="90" width="559" height="367"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="hpn-bZ-308">
-                            <rect key="frame" x="1" y="1" width="540" height="365"/>
+                            <rect key="frame" x="1" y="1" width="557" height="365"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" selectable="NO" importsGraphics="NO" verticallyResizable="YES" id="360">
-                                    <rect key="frame" x="0.0" y="0.0" width="540" height="365"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="557" height="365"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" red="0.76862746000000004" green="0.10196079" blue="0.086274511999999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="540" height="365"/>
+                                    <size key="minSize" width="557" height="365"/>
                                     <size key="maxSize" width="1101" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
@@ -531,11 +533,11 @@ If you understand this and are willing to enable remote source features then typ
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="359">
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="359">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="358">
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="358">
                             <rect key="frame" x="543" y="1" width="15" height="365"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
@@ -581,7 +583,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="340" y="16" width="653" height="621"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1410"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="769"/>
             <view key="contentView" id="375">
                 <rect key="frame" x="0.0" y="0.0" width="653" height="621"/>
                 <autoresizingMask key="autoresizingMask"/>

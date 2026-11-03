@@ -263,7 +263,7 @@
 
 - (NSColor *)textColorForCell:(PSMTabBarCell *)cell {
     NSColor *textColor;
-    if (cell.state == NSOnState) {
+    if (cell.state == NSControlStateValueOn) {
         if (!cell.tabColor) {
             return [self textColorDefaultSelected:YES];
         } else if ([cell.tabColor brightnessComponent] > 0.2) {
@@ -299,7 +299,7 @@
     truncatingTailParagraphStyle =
         [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     [truncatingTailParagraphStyle setLineBreakMode:[cell truncationStyle]];
-    [truncatingTailParagraphStyle setAlignment:NSCenterTextAlignment];
+    [truncatingTailParagraphStyle setAlignment:NSTextAlignmentCenter];
 
     [attrStr addAttribute:NSParagraphStyleAttributeName
                     value:truncatingTailParagraphStyle
