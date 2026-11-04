@@ -1785,14 +1785,14 @@
 		A9CA81D412D0BB2A005346FD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "/usr/bin/ruby increment_buildnumber.rb\n/usr/bin/ruby write_buildnumber.rb\n";
 		};
